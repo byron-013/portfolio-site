@@ -8,7 +8,7 @@ const skillGroups: SkillGroup[] = [
   {
     category: "Languages",
     icon: "{ }",
-    skills: ["Python", "SQL"],
+    skills: ["Python", "SQL", "TypeScript"],
   },
   {
     category: "ML & Data Science",
@@ -32,6 +32,11 @@ const skillGroups: SkillGroup[] = [
     icon: "⌬",
     skills: ["SQLite", "Git", "Jupyter", "matplotlib", "seaborn"],
   },
+  {
+    category: "Web",
+    icon: "</>",
+    skills: ["React", "Next.js", "Tailwind CSS", "HTML/CSS"],
+  },
 ];
 
 export default function Skills() {
@@ -43,7 +48,7 @@ export default function Skills() {
           Skills &amp; Competencies
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {skillGroups.map((group) => (
             <div
               key={group.category}

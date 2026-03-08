@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section
@@ -42,21 +44,16 @@ export default function Hero() {
             </svg>
             LinkedIn
           </a>
-          <a
-            href="#projects"
+          <Link
+            href="/projects"
             className="flex items-center gap-2 px-6 py-3 text-[#94a3b8] hover:text-[#f0f4ff] transition-colors duration-200 text-sm tracking-wide"
           >
             View Projects
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
-          </a>
+          </Link>
         </div>
-      </div>
-
-      {/* Decorative line */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
-        <div className="w-px h-64 bg-gradient-to-b from-transparent via-[#c9a84c]/30 to-transparent" />
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Byron Delaney Jr — Quantitative Finance & Data Science",
   description:
-    "Portfolio of Byron Delaney Jr, UC Berkeley Applied Mathematics. Specializing in quantitative finance, financial modeling, and machine learning.",
+    "Portfolio of Byron Delaney Jr, UC Berkeley Applied Mathematics. Quantitative finance, financial modeling, and machine learning.",
   openGraph: {
     title: "Byron Delaney Jr — Quantitative Finance & Data Science",
     description:
@@ -29,7 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <Navbar />
+        <div className="flex-1">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }
