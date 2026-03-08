@@ -30,7 +30,7 @@ const skillGroups: SkillGroup[] = [
   {
     category: "Tools & Platforms",
     icon: "⌬",
-    skills: ["SQLite", "Git", "Jupyter", "matplotlib", "seaborn"],
+    skills: ["SQLite", "Git", "Jupyter", "matplotlib", "seaborn", "Databricks"],
   },
   {
     category: "Web",

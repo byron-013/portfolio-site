@@ -19,7 +19,7 @@ export default function Hero() {
           Quantitative Finance &amp; Data Science
         </h2>
         <p className="text-base md:text-lg text-[#cbd5e1] max-w-xl leading-relaxed mb-10">
-          Turning complex data into financial insight. I build end-to-end quantitative systems — from credit risk models and portfolio optimizers to statistical algorithms grounded in applied mathematics.
+          Building rigorous quantitative systems — from credit risk models to portfolio optimizers — grounded in applied mathematics.
         </p>
         <div className="flex flex-wrap gap-4">
           <a

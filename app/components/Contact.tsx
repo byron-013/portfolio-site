@@ -7,7 +7,7 @@ export default function Contact() {
           Let&apos;s Connect
         </h2>
         <p className="text-[#94a3b8] mb-12 max-w-lg leading-relaxed">
-          I&apos;m actively exploring opportunities in quantitative finance, financial analysis, and data science. If you&apos;re working on something interesting, I&apos;d like to hear about it.
+          I&apos;m actively exploring opportunities in quantitative finance, financial analysis, and data science. If you&apos;re working on something interesting, reach out — I respond quickly.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
