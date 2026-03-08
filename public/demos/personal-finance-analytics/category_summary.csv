@@ -1,0 +1,32 @@
+parent_category,category_name,category_type,transaction_count,total_amount,avg_amount,min_amount,max_amount
+Transportation,Auto Insurance,expense,36,5957.82,165.5,96.46,253.88
+Earned Income,Bonus,income,6,35118.22,5853.04,2172.8,10497.37
+Transportation,Car Payment,expense,36,16590.37,460.84,261.67,732.74
+Shopping,Clothing,expense,48,5649.78,117.7,22.82,331.25
+Food,Coffee Shops,expense,144,1034.1,7.18,3.11,14.54
+Entertainment,Concerts,expense,42,4879.99,116.19,40.22,265.04
+Financial,Credit Card Payment,expense,36,9624.09,267.34,102.83,509.64
+Utilities,Electric,expense,36,5346.19,148.51,76.95,359.27
+Shopping,Electronics,expense,43,18433.78,428.69,133.24,1384.78
+Food,Fast Food,expense,50,818.36,16.37,7.53,28.31
+Transportation,Gasoline,expense,144,21274.31,147.74,75.7,282.54
+Food,Groceries,expense,144,19775.97,137.33,54.0,295.91
+Housing,HOA Fees,expense,12,3862.19,321.85,225.86,437.13
+Healthcare,Health Insurance,expense,36,15289.22,424.7,225.14,666.5
+Entertainment,Hobbies,expense,38,2110.6,55.54,13.7,159.4
+Shopping,Home Goods,expense,38,3174.41,83.54,14.2,235.88
+Housing,Home Insurance,expense,12,2324.16,193.68,154.89,236.0
+Utilities,Internet,expense,36,2459.0,68.31,38.46,110.61
+Financial,Investment Contribution,expense,36,20643.21,573.42,154.85,1330.11
+Financial,Loan Payment,expense,36,14142.38,392.84,165.53,718.49
+Housing,Mortgage,expense,12,33955.17,2829.6,2390.99,3390.16
+Entertainment,Movies,expense,47,1421.16,30.24,14.84,58.64
+Utilities,Natural Gas,expense,36,2174.22,60.39,14.74,128.17
+Shopping,Personal Care,expense,39,1524.9,39.1,11.14,93.03
+Utilities,Phone,expense,36,2420.14,67.23,32.53,121.28
+Housing,Property Tax,expense,12,5883.51,490.29,360.35,610.82
+Housing,Rent,expense,24,56498.56,2354.11,1391.18,3460.04
+Food,Restaurants,expense,44,2934.54,66.69,19.0,125.75
+Earned Income,Salary,income,72,387764.4,5385.62,3752.49,7382.8
+Entertainment,Streaming Services,expense,36,643.55,17.88,8.24,42.8
+Utilities,Water,expense,36,2462.96,68.42,38.93,106.76

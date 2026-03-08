@@ -1,0 +1,13 @@
+user_id,full_name,month,total_income,total_expenses,net_savings,savings_rate_pct,transaction_count
+2,Patricia Miller,2025-03,3752.49,4781.87,-1029.38,-27.4,32
+2,Patricia Miller,2025-04,7504.98,4777.54,2727.44,36.3,36
+2,Patricia Miller,2025-05,7504.98,4755.49,2749.49,36.6,39
+2,Patricia Miller,2025-06,7504.98,5144.43,2360.55,31.5,39
+2,Patricia Miller,2025-07,7504.98,5050.4,2454.58,32.7,40
+2,Patricia Miller,2025-08,11257.47,5914.51,5342.96,47.5,39
+2,Patricia Miller,2025-09,7504.98,4895.36,2609.62,34.8,40
+2,Patricia Miller,2025-10,7504.98,5108.41,2396.57,31.9,38
+2,Patricia Miller,2025-11,7504.98,5268.21,2236.77,29.8,38
+2,Patricia Miller,2025-12,11489.44,7623.3,3866.14,33.6,42
+2,Patricia Miller,2026-01,9677.78,6130.66,3547.12,36.7,51
+2,Patricia Miller,2026-02,7504.98,3476.77,4028.21,53.7,23

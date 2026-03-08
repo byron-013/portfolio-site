@@ -20,7 +20,7 @@ export type Project = {
   keyMetrics: ProjectMetric[];
   technicalApproach: { heading: string; body: string }[];
   techStack: TechItem[];
-  galleryItems: { label: string; sublabel: string }[];
+  galleryItems: { label: string; sublabel: string; imagePath?: string }[];
   github: string;
 };
 
@@ -74,9 +74,12 @@ export const projects: Project[] = [
       { name: "SQLite", group: "Storage" },
     ],
     galleryItems: [
-      { label: "ROC Curves", sublabel: "Logistic Regression vs. Random Forest vs. XGBoost" },
-      { label: "SHAP Summary Plot", sublabel: "Global feature importance across all predictions" },
-      { label: "Confusion Matrix", sublabel: "Best model classification results on holdout set" },
+      { label: "ROC Curves", sublabel: "Logistic Regression vs. Random Forest vs. XGBoost", imagePath: "/demos/credit-risk-scoring/roc_curves.png" },
+      { label: "SHAP Summary Plot", sublabel: "Global feature importance across all predictions", imagePath: "/demos/credit-risk-scoring/shap_summary.png" },
+      { label: "Confusion Matrix", sublabel: "Best model classification results on holdout set", imagePath: "/demos/credit-risk-scoring/confusion_matrix_final.png" },
+      { label: "Model Comparison", sublabel: "AUC and F1 across all three classifiers", imagePath: "/demos/credit-risk-scoring/model_comparison.png" },
+      { label: "Feature Importance", sublabel: "Top features driving default predictions", imagePath: "/demos/credit-risk-scoring/feature_importance.png" },
+      { label: "Risk Distribution", sublabel: "Predicted probability distribution by outcome", imagePath: "/demos/credit-risk-scoring/risk_distribution.png" },
     ],
     github: "https://github.com/byron-013/credit_risk_scoring",
   },
@@ -122,9 +125,10 @@ export const projects: Project[] = [
       { name: "Yahoo Finance API", group: "Data Source" },
     ],
     galleryItems: [
-      { label: "Efficient Frontier", sublabel: "5,000 simulated portfolios with Sharpe-optimal highlighted" },
-      { label: "Correlation Heatmap", sublabel: "Asset return correlations across the 8-stock universe" },
-      { label: "Optimal Allocation", sublabel: "Weight distribution of the Sharpe-maximizing portfolio" },
+      { label: "Efficient Frontier", sublabel: "5,000 simulated portfolios with Sharpe-optimal highlighted", imagePath: "/demos/stock-portfolio-pipeline/efficient_frontier.png" },
+      { label: "Correlation Heatmap", sublabel: "Asset return correlations across the 8-stock universe", imagePath: "/demos/stock-portfolio-pipeline/correlation_heatmap.png" },
+      { label: "Normalized Price History", sublabel: "All 8 stocks normalized to base 100 over 2 years", imagePath: "/demos/stock-portfolio-pipeline/price_history.png" },
+      { label: "Returns Distribution (AAPL)", sublabel: "Daily return histogram with normal distribution overlay", imagePath: "/demos/stock-portfolio-pipeline/returns_distribution_AAPL.png" },
     ],
     github: "https://github.com/byron-013/stock-portfolio-pipeline",
   },
@@ -170,8 +174,12 @@ export const projects: Project[] = [
       { name: "Faker", group: "Data Generation" },
     ],
     galleryItems: [
-      { label: "Database Schema", sublabel: "Entity-relationship diagram — 7 tables, 3NF" },
-      { label: "Budget Variance Dashboard", sublabel: "Monthly actuals vs. budgeted by category" },
+      { label: "Spending Trends", sublabel: "Monthly spending over time by category", imagePath: "/demos/personal-finance-analytics/spending_trends.png" },
+      { label: "Budget Variance Dashboard", sublabel: "Monthly actuals vs. budgeted by category", imagePath: "/demos/personal-finance-analytics/budget_variance.png" },
+      { label: "Income vs. Expenses", sublabel: "Monthly income and expense comparison", imagePath: "/demos/personal-finance-analytics/income_vs_expenses.png" },
+      { label: "Savings Rate", sublabel: "Rolling savings rate over 12 months", imagePath: "/demos/personal-finance-analytics/savings_rate.png" },
+      { label: "Category Breakdown", sublabel: "Spending distribution across categories", imagePath: "/demos/personal-finance-analytics/category_breakdown.png" },
+      { label: "Top Merchants", sublabel: "Highest-spend merchants by transaction volume", imagePath: "/demos/personal-finance-analytics/top_merchants.png" },
     ],
     github: "https://github.com/byron-013/personal_finance_analytics",
   },
@@ -216,8 +224,8 @@ export const projects: Project[] = [
       { name: "pdfplumber", group: "Parsing" },
     ],
     galleryItems: [
-      { label: "Topic-Word Distributions", sublabel: "Top 10 words per discovered topic" },
-      { label: "Document-Topic Matrix", sublabel: "Topic mixture proportions across the corpus" },
+      { label: "Topic-Word Distributions", sublabel: "Top 10 words per discovered topic", imagePath: "/demos/lda-topic-modeling/top_words_per_topic.png" },
+      { label: "Document-Topic Matrix", sublabel: "Topic mixture proportions across the corpus", imagePath: "/demos/lda-topic-modeling/document_topic_heatmap.png" },
     ],
     github: "https://github.com/byron-013/LDA-Algorithm",
   },
@@ -254,8 +262,10 @@ export const projects: Project[] = [
       { name: "NumPy", group: "Data" },
     ],
     galleryItems: [
-      { label: "Regression Fit", sublabel: "Predicted vs. actual values on sample dataset" },
-      { label: "Residual Analysis", sublabel: "Residual distribution and Q-Q plot" },
+      { label: "Single Variable Regression Fit", sublabel: "Observed data, fitted line, and true line", imagePath: "/demos/linear-regression/single_variable_linear_regression.png" },
+      { label: "Residual Analysis", sublabel: "Residuals vs. predicted values for multivariate model", imagePath: "/demos/linear-regression/multivariate_residual_plot.png" },
+      { label: "Actual vs. Predicted", sublabel: "Multivariate regression prediction accuracy", imagePath: "/demos/linear-regression/multivariate_actual_vs_predicted.png" },
+      { label: "Estimated Coefficients", sublabel: "Bar chart of fitted regression coefficients", imagePath: "/demos/linear-regression/multivariate_coefficients.png" },
     ],
     github: "https://github.com/byron-013/python-linear-regression-functions",
   },
@@ -298,8 +308,10 @@ export const projects: Project[] = [
       { name: "matplotlib", group: "Visualization" },
     ],
     galleryItems: [
-      { label: "Optimized Route Visualization", sublabel: "TSP tour before and after simulated annealing" },
-      { label: "Convergence Curve", sublabel: "Tour length vs. iteration across the cooling schedule" },
+      { label: "TSP: Before & After", sublabel: "Tour route before and after SA optimization", imagePath: "/demos/simulated-annealing/sa_tsp_comparison.png" },
+      { label: "Convergence Curve", sublabel: "Energy value over iterations during cooling", imagePath: "/demos/simulated-annealing/sa_convergence_curve.png" },
+      { label: "1D Function Minimization", sublabel: "SA applied to a multimodal function f(x) = x\u2074 - 3x\u00b2 + x", imagePath: "/demos/simulated-annealing/sa_1d_minimization.png" },
+      { label: "Cooling Schedule", sublabel: "Geometric temperature decay over 3,000 iterations", imagePath: "/demos/simulated-annealing/sa_temperature_schedule.png" },
     ],
     github: "https://github.com/byron-013/Simulated-Annealing",
   },

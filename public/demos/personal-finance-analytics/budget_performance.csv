@@ -1,0 +1,37 @@
+user_id,full_name,month_year,parent_category,category_name,budgeted,actual_spent,remaining,pct_used,status
+2,Patricia Miller,2026-03,Housing,Rent,1719.76,0.0,1719.76,0.0,ON TRACK
+2,Patricia Miller,2026-03,Transportation,Gasoline,96.6,0.0,96.6,0.0,ON TRACK
+2,Patricia Miller,2026-03,Food,Groceries,56.69,0.0,56.69,0.0,ON TRACK
+2,Patricia Miller,2026-03,Utilities,Electric,114.42,0.0,114.42,0.0,ON TRACK
+2,Patricia Miller,2026-03,Entertainment,Streaming Services,8.44,0.0,8.44,0.0,ON TRACK
+2,Patricia Miller,2026-03,Shopping,Clothing,103.39,0.0,103.39,0.0,ON TRACK
+2,Patricia Miller,2026-01,Housing,Rent,1692.02,0.0,1692.02,0.0,ON TRACK
+2,Patricia Miller,2026-01,Transportation,Gasoline,125.96,497.29,-371.33,394.8,OVER BUDGET
+2,Patricia Miller,2026-01,Food,Groceries,93.16,607.76,-514.6,652.4,OVER BUDGET
+2,Patricia Miller,2026-01,Utilities,Electric,101.34,115.34,-14.0,113.8,OVER BUDGET
+2,Patricia Miller,2026-01,Entertainment,Streaming Services,13.36,0.0,13.36,0.0,ON TRACK
+2,Patricia Miller,2026-01,Shopping,Clothing,44.27,322.39,-278.12,728.2,OVER BUDGET
+2,Patricia Miller,2025-12,Housing,Rent,1609.29,3241.2,-1631.91,201.4,OVER BUDGET
+2,Patricia Miller,2025-12,Transportation,Gasoline,95.36,423.56,-328.2,444.2,OVER BUDGET
+2,Patricia Miller,2025-12,Food,Groceries,74.3,441.06,-366.76,593.6,OVER BUDGET
+2,Patricia Miller,2025-12,Utilities,Electric,110.96,82.77,28.19,74.6,ON TRACK
+2,Patricia Miller,2025-12,Entertainment,Streaming Services,15.2,28.44,-13.24,187.1,OVER BUDGET
+2,Patricia Miller,2025-12,Shopping,Clothing,95.86,142.83,-46.97,149.0,OVER BUDGET
+2,Patricia Miller,2025-12,Housing,Rent,2021.51,3241.2,-1219.69,160.3,OVER BUDGET
+2,Patricia Miller,2025-12,Transportation,Gasoline,133.55,423.56,-290.01,317.2,OVER BUDGET
+2,Patricia Miller,2025-12,Food,Groceries,101.68,441.06,-339.38,433.8,OVER BUDGET
+2,Patricia Miller,2025-12,Utilities,Electric,135.46,82.77,52.69,61.1,ON TRACK
+2,Patricia Miller,2025-12,Entertainment,Streaming Services,11.63,28.44,-16.81,244.5,OVER BUDGET
+2,Patricia Miller,2025-12,Shopping,Clothing,116.13,142.83,-26.7,123.0,OVER BUDGET
+2,Patricia Miller,2025-11,Housing,Rent,2176.66,1558.94,617.72,71.6,ON TRACK
+2,Patricia Miller,2025-11,Transportation,Gasoline,91.32,373.59,-282.27,409.1,OVER BUDGET
+2,Patricia Miller,2025-11,Food,Groceries,73.92,487.59,-413.67,659.6,OVER BUDGET
+2,Patricia Miller,2025-11,Utilities,Electric,99.19,99.15,0.04,100.0,AT RISK
+2,Patricia Miller,2025-11,Entertainment,Streaming Services,14.73,9.05,5.68,61.4,ON TRACK
+2,Patricia Miller,2025-11,Shopping,Clothing,57.16,556.86,-499.7,974.2,OVER BUDGET
+2,Patricia Miller,2025-10,Housing,Rent,1903.87,1391.18,512.69,73.1,ON TRACK
+2,Patricia Miller,2025-10,Transportation,Gasoline,120.22,373.36,-253.14,310.6,OVER BUDGET
+2,Patricia Miller,2025-10,Food,Groceries,83.34,373.15,-289.81,447.7,OVER BUDGET
+2,Patricia Miller,2025-10,Utilities,Electric,112.81,96.45,16.36,85.5,ON TRACK
+2,Patricia Miller,2025-10,Entertainment,Streaming Services,9.44,10.96,-1.52,116.1,OVER BUDGET
+2,Patricia Miller,2025-10,Shopping,Clothing,117.48,175.05,-57.57,149.0,OVER BUDGET
