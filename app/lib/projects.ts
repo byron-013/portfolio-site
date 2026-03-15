@@ -22,6 +22,8 @@ export type Project = {
   techStack: TechItem[];
   galleryItems: { label: string; sublabel: string; imagePath?: string }[];
   github: string;
+  isPrivate?: boolean;
+  accessLink?: string;
 };
 
 export const projectCategories: { id: ProjectCategory | "all"; label: string }[] = [
@@ -32,6 +34,73 @@ export const projectCategories: { id: ProjectCategory | "all"; label: string }[]
 ];
 
 export const projects: Project[] = [
+  {
+    slug: "ktrm",
+    title: "kTRM — Options Analytics Engine",
+    shortTitle: "kTRM",
+    category: "finance-risk",
+    tagline:
+      "Native C++ implied-vol solver + eSSVI surface fitting, exposed through a terminal UI, web dashboard, and export pipeline.",
+    description:
+      "A private derivatives analytics engine built for rapid surface calibration across the full options chain. Data is fetched from Databento, converted to Parquet, and passed into a native C++ implied volatility solver built on the Jaeckel method with OpenMP parallelism and zero-copy NumPy interop. Includes a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
+    keyMetrics: [
+      { value: "C++", label: "Solver Language" },
+      { value: "eSSVI", label: "Surface Model" },
+      { value: "6", label: "Underlyings Supported" },
+      { value: "2", label: "Interfaces (TUI + Web)" },
+    ],
+    technicalApproach: [
+      {
+        heading: "What it enables",
+        body: "kTRM is built for the workflows quant researchers and vol traders actually run: intraday surface recalibration, skew monitoring across expiries, arbitrage detection on live vol surfaces, and greeks computation from fitted eSSVI parameters. Surfaces can be recalibrated on demand or exported to Parquet for batch downstream analytics.",
+      },
+      {
+        heading: "C++ Implied Volatility Solver",
+        body: "The core solver implements the Jaeckel method in native C++ with OpenMP parallelism and zero-copy NumPy interop via ctypes bindings. It evaluates implied volatility from option prices at scale, forming the foundation for all downstream surface fitting and analytics.",
+      },
+      {
+        heading: "eSSVI Surface Calibration",
+        body: "Parametric eSSVI (extended Surface SVI) volatility surfaces are fitted with arbitrage penalty terms that penalize butterfly and calendar spread violations. The calibration pipeline outputs per-tenor fit quality metrics, residuals, and diagnostic charts.",
+      },
+      {
+        heading: "Terminal UI",
+        body: "A Textual-based TUI provides interactive surface exploration from the command line. Tenor navigation, coordinate mode switching (IV, total variance, sigma-squared, ATM term structure), series toggles (mid/bid/ask), an autocompleting command bar, CSV export, and an integrated Databento download manager.",
+      },
+      {
+        heading: "Web Dashboard",
+        body: "A Dash/Plotly web interface with interactive smile plots, eSSVI fit overlays, a 3D fitted surface viewer, per-tenor residual diagnostics, strike-level inspection via ag-Grid, and a paginated arbitrage violation scanner. Built by Dario Mazhara.",
+      },
+      {
+        heading: "Contributions",
+        body: "Core engine (C++ solver, eSSVI calibration, data pipeline, terminal UI) built by Byron Delaney and Javier Flores. Web dashboard built by Dario Mazhara.",
+      },
+    ],
+    techStack: [
+      { name: "C++", group: "Language" },
+      { name: "Python", group: "Language" },
+      { name: "OpenMP", group: "Performance" },
+      { name: "ctypes", group: "Bindings" },
+      { name: "Textual", group: "TUI" },
+      { name: "Rich", group: "TUI" },
+      { name: "Dash", group: "Web" },
+      { name: "Plotly", group: "Web" },
+      { name: "ag-Grid", group: "Web" },
+      { name: "Databento", group: "Data" },
+      { name: "Polars", group: "Data" },
+      { name: "NumPy", group: "Data" },
+    ],
+    galleryItems: [
+      { label: "Terminal UI — ATM Term Structure", sublabel: "TUI home tab showing tenor list, ASCII term structure chart, stats grid, and strike table for SPY", imagePath: "/demos/ktrm/tui_term_structure.png" },
+      { label: "Web — Volatility Smile + eSSVI Fit", sublabel: "Dash dashboard with smile plot, eSSVI fit overlay, stats grid, and strike table for SPY 2025-01-16", imagePath: "/demos/ktrm/web_smile_fit.png" },
+      { label: "Web — Smile Controls + Stats", sublabel: "Coordinate mode buttons, series toggles, ATM marker, export, and 8-metric stats grid", imagePath: "/demos/ktrm/web_smile_controls.png" },
+      { label: "Web — Surface Diagnostics", sublabel: "3D eSSVI surface, selected-tenor fit slice, residuals, parameter terms, and fit quality by tenor", imagePath: "/demos/ktrm/web_surface_diagnostics.png" },
+      { label: "Web — Strike Inspector", sublabel: "Strike table with per-row detail inspector showing moneyness, bid/ask IV, and validity status", imagePath: "/demos/ktrm/web_strike_inspector.png" },
+      { label: "Web — Arbitrage Scan", sublabel: "189 violations detected (185 butterfly, 4 calendar) with type, expiration, and constraint details", imagePath: "/demos/ktrm/web_arbitrage_scan.png" },
+    ],
+    github: "https://github.com/byron-013/kTRM",
+    isPrivate: true,
+    accessLink: "#contact",
+  },
   {
     slug: "credit-risk-scoring",
     title: "Credit Risk Scoring & Loan Default Prediction",

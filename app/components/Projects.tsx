@@ -1,12 +1,16 @@
 type Project = {
+  slug: string;
   title: string;
   description: string;
   tags: string[];
   github: string;
+  accessLink?: string;
+  isPrivate?: boolean;
 };
 
 const projects: Project[] = [
   {
+    slug: "credit-risk-scoring",
     title: "Credit Risk Scoring & Loan Default Prediction",
     description:
       "End-to-end ML pipeline predicting loan defaults on the German Credit Dataset. Implements three classifiers (Logistic Regression, Random Forest, XGBoost) with SHAP-based model explainability — critical for regulatory transparency in credit decisions. Feature engineering expanded the dataset from 20 to 67 variables, with SMOTE addressing class imbalance. Best model achieves 0.788 AUC.",
@@ -14,6 +18,7 @@ const projects: Project[] = [
     github: "https://github.com/byron-013/credit_risk_scoring",
   },
   {
+    slug: "stock-portfolio-pipeline",
     title: "Stock Portfolio Analysis Pipeline",
     description:
       "Automated ETL pipeline ingesting two years of equity data from Yahoo Finance into a normalized SQLite database, covering 8 financial stocks. Applies Modern Portfolio Theory and Monte Carlo simulation across 5,000 portfolio allocations to map the efficient frontier and identify the Sharpe ratio-optimal allocation — a workflow directly analogous to institutional portfolio construction.",
@@ -21,6 +26,7 @@ const projects: Project[] = [
     github: "https://github.com/byron-013/stock-portfolio-pipeline",
   },
   {
+    slug: "personal-finance-analytics",
     title: "Personal Finance Analytics",
     description:
       "Financial transaction analysis system generating and analyzing 12 months of synthetic banking data stored in a 7-table normalized SQLite schema (3NF). Covers 10 analytical dimensions including budget variance analysis, cash flow projections, and anomaly detection, with state-specific tax brackets and cost-of-living adjustments for 10 US states.",
@@ -28,6 +34,7 @@ const projects: Project[] = [
     github: "https://github.com/byron-013/personal_finance_analytics",
   },
   {
+    slug: "lda-topic-modeling",
     title: "LDA Topic Modeling Algorithm",
     description:
       "Latent Dirichlet Allocation implemented from scratch using Gibbs Sampling — no high-level library shortcuts. Accepts PDFs and CSVs, runs a full NLP preprocessing pipeline, and performs hyperparameter grid search optimized by perplexity scoring. Demonstrates both the mathematical depth and engineering discipline expected in quantitative research roles.",
@@ -35,6 +42,7 @@ const projects: Project[] = [
     github: "https://github.com/byron-013/LDA-Algorithm",
   },
   {
+    slug: "linear-regression",
     title: "Linear Regression from Scratch",
     description:
       "Single and multivariable linear regression implemented from first principles using only NumPy — no sklearn abstractions. Directly demonstrates mastery of the underlying matrix algebra and optimization mechanics that underpin most statistical and machine learning models used in quantitative finance.",
@@ -42,6 +50,17 @@ const projects: Project[] = [
     github: "https://github.com/byron-013/python-linear-regression-functions",
   },
   {
+    slug: "ktrm",
+    title: "kTRM — Options Analytics Engine",
+    description:
+      "Private derivatives analytics engine built for rapid surface calibration. Native C++ implied-vol solver (Jaeckel method, OpenMP), eSSVI surface fitting with arbitrage penalties, a Textual terminal UI, and a Dash/Plotly web dashboard. Supports SPX, VIX, SPY, QQQ, ES, and OEX.",
+    tags: ["C++", "Python", "Options", "eSSVI", "Dash", "Textual"],
+    github: "https://github.com/byron-013/kTRM",
+    accessLink: "#contact",
+    isPrivate: true,
+  },
+  {
+    slug: "simulated-annealing",
     title: "Simulated Annealing — Traveling Salesman Problem",
     description:
       "Simulated annealing optimization applied to the NP-hard Traveling Salesman Problem. Demonstrates practical command of metaheuristic optimization and combinatorial mathematics — disciplines with direct application to portfolio rebalancing, execution optimization, and operational research in financial contexts.",
@@ -105,21 +124,28 @@ export default function Projects() {
               </div>
 
               <div className="flex gap-3 mt-auto">
+                {project.isPrivate ? (
+                  <a
+                    href={project.accessLink ?? "#contact"}
+                    className="flex-1 text-center text-xs py-2 px-3 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 font-medium tracking-wide"
+                  >
+                    Request Access
+                  </a>
+                ) : (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center text-xs py-2 px-3 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 font-medium tracking-wide"
+                  >
+                    View Code
+                  </a>
+                )}
                 <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center text-xs py-2 px-3 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 font-medium tracking-wide"
-                >
-                  View Code
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/projects/${project.slug}`}
                   className="flex-1 text-center text-xs py-2 px-3 border border-[#1a2235] text-[#94a3b8] rounded hover:border-[#94a3b8] hover:text-[#f0f4ff] transition-all duration-200 font-medium tracking-wide"
                 >
-                  Request Access
+                  View Details
                 </a>
               </div>
             </div>
