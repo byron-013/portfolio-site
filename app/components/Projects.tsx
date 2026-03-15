@@ -53,7 +53,7 @@ const projects: Project[] = [
     slug: "ktrm",
     title: "kTRM — Options Analytics Engine",
     description:
-      "Private derivatives analytics engine built for rapid surface calibration. Native C++ implied-vol solver (Jaeckel method, OpenMP), eSSVI surface fitting with arbitrage penalties, a Textual terminal UI, and a Dash/Plotly web dashboard. Supports SPX, VIX, SPY, QQQ, ES, and OEX.",
+      "Intraday vol surface calibration, skew monitoring, and arbitrage detection across SPX, VIX, SPY, QQQ, ES, and OEX. Native C++ Jaeckel solver with OpenMP, eSSVI surface fitting with no-arbitrage constraints, a terminal UI, and a Dash/Plotly web dashboard. Private repo.",
     tags: ["C++", "Python", "Options", "eSSVI", "Dash", "Textual"],
     github: "https://github.com/byron-013/kTRM",
     accessLink: "#contact",

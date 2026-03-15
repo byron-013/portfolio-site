@@ -40,39 +40,31 @@ export const projects: Project[] = [
     shortTitle: "kTRM",
     category: "finance-risk",
     tagline:
-      "Native C++ implied-vol solver + eSSVI surface fitting, exposed through a terminal UI, web dashboard, and export pipeline.",
+      "Intraday vol surface calibration, skew monitoring, and arbitrage detection across SPX, VIX, SPY, QQQ, ES, and OEX — built from a native C++ solver up through interactive dashboards.",
     description:
-      "A private derivatives analytics engine built for rapid surface calibration across the full options chain. Data is fetched from Databento, converted to Parquet, and passed into a native C++ implied volatility solver built on the Jaeckel method with OpenMP parallelism and zero-copy NumPy interop. Includes a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
+      "A private derivatives analytics engine built for quant research workflows. Databento options data is ingested into Parquet, solved for implied volatility via a native C++ Jaeckel solver with OpenMP parallelism, and fitted to arbitrage-aware eSSVI surfaces. The full pipeline is exposed through a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
     keyMetrics: [
-      { value: "C++", label: "Solver Language" },
-      { value: "eSSVI", label: "Surface Model" },
-      { value: "6", label: "Underlyings Supported" },
-      { value: "2", label: "Interfaces (TUI + Web)" },
+      { value: "9,500+", label: "Contracts per Session" },
+      { value: "8", label: "Per-Tenor Diagnostics" },
+      { value: "6", label: "Underlyings (SPX/VIX/ES...)" },
+      { value: "3", label: "Output Modes (TUI/Web/Export)" },
     ],
     technicalApproach: [
       {
-        heading: "What it enables",
-        body: "kTRM is built for the workflows quant researchers and vol traders actually run: intraday surface recalibration, skew monitoring across expiries, arbitrage detection on live vol surfaces, and greeks computation from fitted eSSVI parameters. Surfaces can be recalibrated on demand or exported to Parquet for batch downstream analytics.",
-      },
-      {
         heading: "C++ Implied Volatility Solver",
-        body: "The core solver implements the Jaeckel method in native C++ with OpenMP parallelism and zero-copy NumPy interop via ctypes bindings. It evaluates implied volatility from option prices at scale, forming the foundation for all downstream surface fitting and analytics.",
+        body: "The Jaeckel method is implemented in native C++ with OpenMP threading and exposed to Python via zero-copy ctypes bindings. The solver processes 9,500+ option contracts per session across the full chain, converting raw prices to implied volatilities that feed directly into surface fitting.",
       },
       {
         heading: "eSSVI Surface Calibration",
-        body: "Parametric eSSVI (extended Surface SVI) volatility surfaces are fitted with arbitrage penalty terms that penalize butterfly and calendar spread violations. The calibration pipeline outputs per-tenor fit quality metrics, residuals, and diagnostic charts.",
+        body: "Fitted surfaces use the extended Surface SVI parameterization with penalty terms that enforce no-arbitrage constraints — butterfly and calendar spread violations are penalized during optimization. Each tenor produces 8 diagnostic metrics (ATM IV, 25-delta risk reversal, 25-delta butterfly, skew, variance swap level, forward vol, IV spread, and R²) plus residual plots.",
       },
       {
-        heading: "Terminal UI",
-        body: "A Textual-based TUI provides interactive surface exploration from the command line. Tenor navigation, coordinate mode switching (IV, total variance, sigma-squared, ATM term structure), series toggles (mid/bid/ask), an autocompleting command bar, CSV export, and an integrated Databento download manager.",
+        heading: "Data Pipeline",
+        body: "Databento L1 options market data is fetched, validated, and stored as Parquet files through an integrated download manager. The pipeline maintains a contract hierarchy across SPX, OEX, VIX, SPY, QQQ, and ES with automatic expiry resolution and forward price computation.",
       },
       {
-        heading: "Web Dashboard",
-        body: "A Dash/Plotly web interface with interactive smile plots, eSSVI fit overlays, a 3D fitted surface viewer, per-tenor residual diagnostics, strike-level inspection via ag-Grid, and a paginated arbitrage violation scanner. Built by Dario Mazhara.",
-      },
-      {
-        heading: "Contributions",
-        body: "Core engine (C++ solver, eSSVI calibration, data pipeline, terminal UI) built by Byron Delaney and Javier Flores. Web dashboard built by Dario Mazhara.",
+        heading: "Terminal UI + Web Dashboard",
+        body: "The Textual TUI supports tenor navigation, four coordinate modes (IV, total variance, sigma-squared, ATM term structure), bid/ask/mid series toggles, CSV export, and an autocompleting command bar. The Dash web UI adds interactive Plotly charts, a 3D surface viewer, eSSVI fit overlays, strike-level inspection via ag-Grid, and a paginated arbitrage scanner that flagged 189 violations (185 butterfly, 4 calendar) on SPY alone.",
       },
     ],
     techStack: [
