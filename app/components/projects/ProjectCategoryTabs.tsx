@@ -53,21 +53,35 @@ export default function ProjectCategoryTabs({ defaultCategory }: Props) {
         {filtered.map((project, i) => (
           <div
             key={project.slug}
-            className="bg-[#111827] border border-[#1a2235] rounded-lg p-6 flex flex-col hover:border-[#c9a84c]/30 hover:shadow-[0_0_24px_rgba(201,168,76,0.05)] transition-all duration-300 group"
+            className="bg-[#111827] border border-[#1a2235] rounded-lg p-6 flex flex-col hover:border-[#d4a853]/40 hover:shadow-[0_8px_32px_rgba(212,168,83,0.12)] hover:-translate-y-2 transition-all duration-300 group"
           >
             <div className="flex items-start justify-between mb-4">
-              <span className="text-[#c9a84c]/40 text-4xl font-bold leading-none select-none">
+              <span className="text-[#d4a853]/50 group-hover:text-[#d4a853]/80 text-4xl font-bold leading-none select-none transition-colors duration-300">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="text-xs px-2 py-1 rounded bg-[#c9a84c]/10 text-[#c9a84c] font-medium tracking-wide border border-[#c9a84c]/20">
+              <span className="text-xs px-2 py-1 rounded bg-[#d4a853]/10 text-[#d4a853] font-medium tracking-wide border border-[#d4a853]/20">
                 {projectCategories.find((c) => c.id === project.category)?.label}
               </span>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {project.interactiveWidget && (
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-[#22d3ee]/10 text-[#67e8f9] font-semibold tracking-wide border border-[#22d3ee]/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#22d3ee] animate-pulse" />
+                  LIVE DEMO
+                </span>
+              )}
+              {project.caseStudy && (
+                <span className="inline-block text-[10px] px-2 py-0.5 rounded bg-[#d4a853]/10 text-[#d4a853] font-semibold tracking-wide border border-[#d4a853]/30">
+                  CASE STUDY
+                </span>
+              )}
             </div>
 
             <h3 className="text-[#f0f4ff] font-semibold text-base mb-2 leading-snug">
               {project.title}
             </h3>
-            <p className="text-[#94a3b8] text-sm leading-relaxed mb-5 flex-1">
+            <p className="text-[#aab8cc] text-sm leading-relaxed mb-5 flex-1">
               {project.tagline}
             </p>
 
@@ -75,13 +89,13 @@ export default function ProjectCategoryTabs({ defaultCategory }: Props) {
               {project.techStack.slice(0, 4).map((t) => (
                 <span
                   key={t.name}
-                  className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#94a3b8] font-medium"
+                  className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#aab8cc] font-medium"
                 >
                   {t.name}
                 </span>
               ))}
               {project.techStack.length > 4 && (
-                <span className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#94a3b8] font-medium">
+                <span className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#aab8cc] font-medium">
                   +{project.techStack.length - 4} more
                 </span>
               )}
@@ -90,7 +104,7 @@ export default function ProjectCategoryTabs({ defaultCategory }: Props) {
             <div className="flex gap-3 mt-auto">
               <Link
                 href={`/projects/${project.slug}`}
-                className="flex-1 text-center text-xs py-2 px-3 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 font-medium tracking-wide"
+                className="flex-1 text-center text-xs py-2 px-3 border border-[#d4a853] text-[#d4a853] rounded hover:bg-[#d4a853] hover:text-[#0a0f1e] transition-all duration-200 font-medium tracking-wide"
               >
                 View Details
               </Link>
@@ -98,7 +112,7 @@ export default function ProjectCategoryTabs({ defaultCategory }: Props) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 text-center text-xs py-2 px-3 border border-[#1a2235] text-[#94a3b8] rounded hover:border-[#94a3b8] hover:text-[#f0f4ff] transition-all duration-200 font-medium tracking-wide"
+                className="flex-1 text-center text-xs py-2 px-3 border border-[#1a2235] text-[#aab8cc] rounded hover:border-[#aab8cc] hover:text-[#f0f4ff] transition-all duration-200 font-medium tracking-wide"
               >
                 View Code
               </a>

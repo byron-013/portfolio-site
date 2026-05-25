@@ -19,12 +19,12 @@ export default async function ProjectsPage({ searchParams }: Props) {
   return (
     <main className="pt-28 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <p className="text-[#c9a84c] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Work</p>
+        <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Work</p>
         <h1 className="text-3xl md:text-4xl font-bold text-[#f0f4ff] mb-3 leading-tight">
           Projects
         </h1>
-        <p className="text-[#94a3b8] mb-12 max-w-xl">
-          Quantitative finance, machine learning, and applied mathematics — built end to end.
+        <p className="text-[#b4c0d4] mb-12 max-w-xl">
+          Quantitative finance, machine learning, and applied mathematics — built end to end. Three include a live in-browser demo.
         </p>
         <Suspense fallback={null}>
           <ProjectCategoryTabs defaultCategory={category} />
