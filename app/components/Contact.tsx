@@ -31,6 +31,17 @@ export default function Contact() {
             </svg>
             linkedin.com/in/byron13
           </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-7 py-4 border border-[#1a2235] text-[#aab8cc] font-semibold rounded hover:border-[#d4a853] hover:text-[#f0f4ff] transition-all duration-200 text-sm tracking-wide"
+          >
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+            </svg>
+            Download Resume
+          </a>
         </div>
       </div>
     </section>
