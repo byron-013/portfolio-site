@@ -22,10 +22,10 @@ export default function ProjectGallery({ items }: Props) {
         {items.map((item, i) => (
           <div
             key={i}
-            className={`aspect-video bg-[#111827] border border-dashed border-[#1a2235] rounded-lg flex flex-col items-center justify-center gap-3 p-2 transition-all duration-200 overflow-hidden ${
+            className={`aspect-video bg-[#111827] border border-dashed border-[#1a2235] rounded-lg flex flex-col items-center justify-center gap-3 p-2 transition-all duration-300 overflow-hidden ${
               item.imagePath
-                ? "cursor-zoom-in hover:border-[#c9a84c]/40 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)] group"
-                : "hover:border-[#c9a84c]/20"
+                ? "cursor-zoom-in hover:border-[#d4a853]/50 hover:shadow-[0_6px_28px_rgba(212,168,83,0.15)] hover:-translate-y-1 group"
+                : "hover:border-[#d4a853]/20"
             }`}
             onClick={() =>
               item.imagePath &&
@@ -37,7 +37,7 @@ export default function ProjectGallery({ items }: Props) {
                 <img
                   src={item.imagePath}
                   alt={item.label}
-                  className="w-full h-full object-contain rounded"
+                  className="w-full h-full object-contain rounded transition-transform duration-300 group-hover:scale-[1.04]"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 rounded flex items-center justify-center">

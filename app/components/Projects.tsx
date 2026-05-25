@@ -71,7 +71,7 @@ const projects: Project[] = [
 
 function Badge({ label }: { label: string }) {
   return (
-    <span className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#94a3b8] font-medium tracking-wide">
+    <span className="inline-block text-xs px-2.5 py-1 rounded bg-[#0a0f1e] border border-[#1a2235] text-[#aab8cc] font-medium tracking-wide group-hover:border-[#d4a853]/20 transition-colors duration-300">
       {label}
     </span>
   );
@@ -85,7 +85,7 @@ export default function Projects() {
         <h2 className="text-3xl md:text-4xl font-bold text-[#f0f4ff] mb-3 leading-tight">
           Selected Projects
         </h2>
-        <p className="text-[#94a3b8] mb-14 max-w-xl">
+        <p className="text-[#b4c0d4] mb-14 max-w-xl">
           Quantitative and data science projects spanning credit risk, portfolio construction, NLP, and applied mathematics.
         </p>
 
@@ -93,10 +93,10 @@ export default function Projects() {
           {projects.map((project, i) => (
             <div
               key={i}
-              className="bg-[#111827] border border-[#1a2235] rounded-lg p-6 flex flex-col hover:border-[#c9a84c]/30 hover:shadow-[0_0_24px_rgba(201,168,76,0.05)] transition-all duration-300 group"
+              className="bg-[#111827] border border-[#1a2235] rounded-lg p-6 flex flex-col hover:border-[#d4a853]/40 hover:shadow-[0_8px_32px_rgba(212,168,83,0.12)] hover:-translate-y-2 transition-all duration-300 group"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="text-[#c9a84c]/40 text-4xl font-bold leading-none select-none">
+                <span className="text-[#d4a853]/50 group-hover:text-[#d4a853]/80 text-4xl font-bold leading-none select-none transition-colors duration-300">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <svg
@@ -113,7 +113,7 @@ export default function Projects() {
               <h3 className="text-[#f0f4ff] font-semibold text-base mb-3 leading-snug">
                 {project.title}
               </h3>
-              <p className="text-[#94a3b8] text-sm leading-relaxed mb-5 flex-1">
+              <p className="text-[#aab8cc] text-sm leading-relaxed mb-5 flex-1">
                 {project.description}
               </p>
 

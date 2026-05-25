@@ -44,7 +44,7 @@ export const projects: Project[] = [
     description:
       "A private derivatives analytics engine built for quant research workflows. Databento options data is ingested into Parquet, solved for implied volatility via a native C++ Jaeckel solver with OpenMP parallelism, and fitted to arbitrage-aware eSSVI surfaces. The full pipeline is exposed through a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
     keyMetrics: [
-      { value: "9,500+", label: "Contracts per Session" },
+      { value: "8.2M", label: "Contracts / Second" },
       { value: "8", label: "Per-Tenor Diagnostics" },
       { value: "6", label: "Underlyings (SPX/VIX/ES...)" },
       { value: "3", label: "Output Modes (TUI/Web/Export)" },
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     technicalApproach: [
       {
         heading: "C++ Implied Volatility Solver",
-        body: "The Jaeckel method is implemented in native C++ with OpenMP threading and exposed to Python via zero-copy ctypes bindings. The solver processes 9,500+ option contracts per session across the full chain, converting raw prices to implied volatilities that feed directly into surface fitting.",
+        body: "The Jaeckel method is implemented in native C++ with OpenMP threading and exposed to Python via zero-copy ctypes bindings. The solver processes 8.2 million contracts per second across the full chain, converting raw prices to implied volatilities that feed directly into surface fitting.",
       },
       {
         heading: "eSSVI Surface Calibration",

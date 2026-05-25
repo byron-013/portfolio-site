@@ -76,7 +76,7 @@ export default async function ProjectPage({ params }: Props) {
           <h1 className="text-3xl md:text-5xl font-bold text-[#f0f4ff] leading-tight mb-4">
             {project.title}
           </h1>
-          <p className="text-[#94a3b8] text-lg leading-relaxed mb-6 max-w-2xl">
+          <p className="text-[#b4c0d4] text-lg leading-relaxed mb-6 max-w-2xl">
             {project.tagline}
           </p>
           {project.isPrivate ? (
@@ -115,12 +115,12 @@ export default async function ProjectPage({ params }: Props) {
             {project.keyMetrics.map((metric) => (
               <div
                 key={metric.label}
-                className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#c9a84c]/20 transition-colors"
+                className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#c9a84c]/40 hover:shadow-[0_4px_24px_rgba(201,168,76,0.14)] hover:-translate-y-1 transition-all duration-200 cursor-default"
               >
-                <p className="text-[#c9a84c] text-2xl font-bold mb-1 leading-none">
+                <p className="text-[#d4a853] text-2xl font-bold mb-1 leading-none">
                   {metric.value}
                 </p>
-                <p className="text-[#94a3b8] text-xs tracking-wide">{metric.label}</p>
+                <p className="text-[#aab8cc] text-xs tracking-wide">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -130,15 +130,15 @@ export default async function ProjectPage({ params }: Props) {
         <section className="mb-16">
           <p className="text-[#c9a84c] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Approach</p>
           <h2 className="text-2xl font-bold text-[#f0f4ff] mb-8">Technical Overview</h2>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
             {project.technicalApproach.map((item) => (
-              <div key={item.heading} className="flex gap-4">
+              <div key={item.heading} className="flex gap-4 rounded-lg p-4 -mx-4 hover:bg-[#111827]/70 transition-colors duration-200 group">
                 <div className="flex-shrink-0 mt-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] block" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] block group-hover:shadow-[0_0_8px_rgba(212,168,83,0.6)] transition-shadow duration-200" />
                 </div>
                 <div>
                   <h3 className="text-[#f0f4ff] font-semibold mb-2">{item.heading}</h3>
-                  <p className="text-[#94a3b8] leading-relaxed">{item.body}</p>
+                  <p className="text-[#aab8cc] leading-relaxed">{item.body}</p>
                 </div>
               </div>
             ))}
@@ -169,7 +169,7 @@ export default async function ProjectPage({ params }: Props) {
                   {items.map((name) => (
                     <span
                       key={name}
-                      className="text-xs px-3 py-1.5 rounded bg-[#111827] border border-[#1a2235] text-[#94a3b8] font-medium"
+                      className="text-xs px-3 py-1.5 rounded bg-[#111827] border border-[#1a2235] text-[#aab8cc] font-medium hover:border-[#d4a853]/40 hover:text-[#f0f4ff] hover:scale-105 transition-all duration-150 cursor-default inline-block"
                     >
                       {name}
                     </span>
