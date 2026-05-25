@@ -109,8 +109,34 @@ export default async function ProjectPage({ params }: Props) {
           )}
         </div>
 
-        {/* Interactive Widget */}
-        {project.interactiveWidget && (
+        {/* Case Study */}
+        {project.caseStudy && (
+          <section className="mb-16">
+            <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Case Study</p>
+            <h2 className="text-2xl font-bold text-[#f0f4ff] mb-8">How It Was Built</h2>
+
+            <div className="flex flex-col gap-8">
+              <CaseStudyBlock label="Problem" body={project.caseStudy.problem} />
+              <CaseStudyBlock label="Approach" body={project.caseStudy.approach} />
+
+              {project.interactiveWidget && (
+                <div>
+                  <p className="text-[#d4a853] text-[10px] tracking-[0.2em] uppercase mb-3 font-semibold">
+                    Try it live
+                  </p>
+                  {project.interactiveWidget === "EfficientFrontier" && <EfficientFrontierClient />}
+                  {project.interactiveWidget === "CreditRiskScorer" && <CreditRiskScorerClient />}
+                </div>
+              )}
+
+              <CaseStudyBlock label="Key Decision" body={project.caseStudy.decision} />
+              <CaseStudyBlock label="Result" body={project.caseStudy.result} />
+            </div>
+          </section>
+        )}
+
+        {/* Widget without case study (none today, but keeps the dispatch isolated) */}
+        {!project.caseStudy && project.interactiveWidget && (
           <section className="mb-16">
             <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Try It</p>
             <h2 className="text-2xl font-bold text-[#f0f4ff] mb-6">Interactive Demo</h2>
@@ -229,5 +255,21 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
     </main>
+  );
+}
+
+function CaseStudyBlock({ label, body }: { label: string; body: string }) {
+  return (
+    <div className="flex gap-4 rounded-lg p-4 -mx-4 hover:bg-[#111827]/70 transition-colors duration-200 group">
+      <div className="flex-shrink-0 mt-1.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] block group-hover:shadow-[0_0_8px_rgba(212,168,83,0.6)] transition-shadow duration-200" />
+      </div>
+      <div>
+        <p className="text-[#d4a853] text-[10px] tracking-[0.2em] uppercase mb-1.5 font-semibold">
+          {label}
+        </p>
+        <p className="text-[#cbd5e1] leading-relaxed text-[15px]">{body}</p>
+      </div>
+    </div>
   );
 }

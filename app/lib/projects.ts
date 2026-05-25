@@ -12,6 +12,13 @@ export type TechItem = {
 
 export type InteractiveWidget = "EfficientFrontier" | "CreditRiskScorer";
 
+export type CaseStudy = {
+  problem: string;
+  approach: string;
+  decision: string;
+  result: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -27,6 +34,7 @@ export type Project = {
   isPrivate?: boolean;
   accessLink?: string;
   interactiveWidget?: InteractiveWidget;
+  caseStudy?: CaseStudy;
 };
 
 export const projectCategories: { id: ProjectCategory | "all"; label: string }[] = [
@@ -95,6 +103,19 @@ export const projects: Project[] = [
     github: "https://github.com/byron-013/kTRM",
     isPrivate: true,
     accessLink: "#contact",
+    caseStudy: {
+      // REVIEW: rewrite in your own voice; the framing is correct but the specifics
+      // (especially the decision) are stronger if you anchor them in something
+      // concrete you hit during development.
+      problem:
+        "Quants need a fast feedback loop between raw options market data and a usable volatility surface. Off-the-shelf tools either solve implied vol slowly in pure Python or hide the calibration behind a black box, leaving no way to inspect arbitrage violations strike by strike.",
+      approach:
+        "Built a vertically integrated stack: a native C++ Jaeckel solver with OpenMP threading handles implied vol, Python wraps it via zero-copy ctypes, eSSVI surface fitting enforces no-arbitrage via penalty terms, and a Textual TUI plus a Dash/Plotly web dashboard surface the results. Databento L1 data flows in through a managed Parquet pipeline.",
+      decision:
+        "Pushed the solver to native C++ rather than staying in NumPy. The Jaeckel method is iterative and runs millions of times per session — keeping it in Python would have made the interactive dashboards unusable. The ctypes bridge takes minutes to write and pays for itself the first time you scan the full SPX chain.",
+      result:
+        "8.2 million contracts per second through the solver, eight per-tenor diagnostics (ATM IV, 25-delta risk reversal, butterfly, skew, variance swap level, forward vol, IV spread, R²) computed live, and 189 arbitrage violations flagged on SPY alone (185 butterfly, 4 calendar) in the first full-chain scan.",
+    },
   },
   {
     slug: "credit-risk-scoring",
@@ -147,6 +168,19 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/byron-013/credit_risk_scoring",
     interactiveWidget: "CreditRiskScorer",
+    caseStudy: {
+      // REVIEW: the "decision" paragraph is the one to make your own — pick the
+      // call that actually mattered most when you were building this (SMOTE, the
+      // model choice, the SHAP integration, etc.) and explain why.
+      problem:
+        "Lenders need credit models that are both predictive and auditable. Regulators require an explanation for every adverse decision, which rules out black-box ensembles unless you can attach feature-level reasoning to each score. The German Credit dataset adds a realistic twist: defaults are the minority class, so naive models just predict 'pay back' for everyone.",
+      approach:
+        "Trained three classifiers — Logistic Regression, Random Forest, and XGBoost — under cross-validated hyperparameter tuning. Engineered 20 raw features into 67 via interactions and polynomial terms, applied SMOTE to the training fold only (never the holdout), and attached SHAP explanations to the winning model for per-prediction attribution.",
+      decision:
+        "Picked Logistic Regression over the tree ensembles even though XGBoost is the default reach in credit work. On this dataset size the logistic generalized best (0.788 AUC vs. lower out-of-sample for the trees), and the regulatory story is far cleaner: every coefficient is a one-line explanation, and SHAP values reduce to signed feature contributions a credit officer can read.",
+      result:
+        "0.788 AUC on the holdout set with full SHAP attribution, deployed as a CLI for batch scoring. The interactive widget on this page runs the same logistic structure live so you can see how each feature pushes the default probability.",
+    },
   },
   {
     slug: "stock-portfolio-pipeline",
@@ -197,6 +231,19 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/byron-013/stock-portfolio-pipeline",
     interactiveWidget: "EfficientFrontier",
+    caseStudy: {
+      // REVIEW: the "decision" paragraph is generic; rewrite once you've actually
+      // run the pipeline against a non-financial-sector universe and have a
+      // concrete observation to anchor the call on.
+      problem:
+        "Modern Portfolio Theory is taught with closed-form min-variance solutions and a few neat illustrations, but real construction needs an honest view of the risk-return cloud — including all the suboptimal allocations a manager could land on if they wing it. Without that, a single 'optimal' portfolio looks correct in isolation but tells you nothing about how sensitive it is.",
+      approach:
+        "Built an end-to-end pipeline: pull two years of daily prices for 8 financial stocks from Yahoo Finance into a normalized SQLite schema, compute annualized returns and the covariance matrix in pandas, then run 5,000 Monte Carlo allocations in risk-return space to map the empirical frontier. Solved the analytical min-variance and max-Sharpe portfolios in closed form for comparison.",
+      decision:
+        "Stored prices and returns as separate tables instead of recomputing returns on every analysis run. The recompute path was cheap for 8 tickers but would have become the bottleneck the moment the universe grew. Normalizing the schema upfront kept the analytical layer SQL-native and made it trivial to swap in new tickers without touching the optimizer code.",
+      result:
+        "Full efficient frontier mapped across 5,000 portfolios and the Sharpe-optimal allocation identified analytically. The interactive widget on this page runs the same MPT math live in your browser — drag the risk-free rate slider and the max-Sharpe portfolio rebalances in real time.",
+    },
   },
   {
     slug: "personal-finance-analytics",
