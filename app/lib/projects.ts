@@ -10,6 +10,8 @@ export type TechItem = {
   group: string;
 };
 
+export type InteractiveWidget = "EfficientFrontier" | "CreditRiskScorer";
+
 export type Project = {
   slug: string;
   title: string;
@@ -24,6 +26,7 @@ export type Project = {
   github: string;
   isPrivate?: boolean;
   accessLink?: string;
+  interactiveWidget?: InteractiveWidget;
 };
 
 export const projectCategories: { id: ProjectCategory | "all"; label: string }[] = [
@@ -192,6 +195,7 @@ export const projects: Project[] = [
       { label: "Returns Distribution (AAPL)", sublabel: "Daily return histogram with normal distribution overlay", imagePath: "/demos/stock-portfolio-pipeline/returns_distribution_AAPL.png" },
     ],
     github: "https://github.com/byron-013/stock-portfolio-pipeline",
+    interactiveWidget: "EfficientFrontier",
   },
   {
     slug: "personal-finance-analytics",

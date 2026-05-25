@@ -8,6 +8,7 @@ import {
   projectCategories,
 } from "@/app/lib/projects";
 import ProjectGallery from "@/app/components/projects/ProjectGallery";
+import EfficientFrontierClient from "@/app/components/widgets/EfficientFrontierClient";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -106,6 +107,15 @@ export default async function ProjectPage({ params }: Props) {
             </a>
           )}
         </div>
+
+        {/* Interactive Widget */}
+        {project.interactiveWidget === "EfficientFrontier" && (
+          <section className="mb-16">
+            <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Try It</p>
+            <h2 className="text-2xl font-bold text-[#f0f4ff] mb-6">Interactive Demo</h2>
+            <EfficientFrontierClient />
+          </section>
+        )}
 
         {/* Key Metrics */}
         <section className="mb-16">
