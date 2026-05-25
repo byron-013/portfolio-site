@@ -146,6 +146,7 @@ export const projects: Project[] = [
       { label: "Risk Distribution", sublabel: "Predicted probability distribution by outcome", imagePath: "/demos/credit-risk-scoring/risk_distribution.png" },
     ],
     github: "https://github.com/byron-013/credit_risk_scoring",
+    interactiveWidget: "CreditRiskScorer",
   },
   {
     slug: "stock-portfolio-pipeline",
