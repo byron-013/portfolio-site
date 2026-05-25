@@ -10,6 +10,17 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-fade-in            { animation: fadeInUp 0.65s ease-out both; }
+.anim-delay-1            { animation-delay: 0.10s; }
+.anim-delay-2            { animation-delay: 0.22s; }
+.anim-delay-3            { animation-delay: 0.36s; }
+.anim-delay-4            { animation-delay: 0.52s; }
+.anim-delay-5            { animation-delay: 0.68s; }
+
 ::selection {
   background: #c9a84c;
   color: #0a0f1e;

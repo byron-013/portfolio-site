@@ -37,18 +37,18 @@ export default function About() {
         {/* Top: Bio + Education cards */}
         <div className="grid md:grid-cols-2 gap-16 items-start mb-20">
           <div>
-            <p className="text-[#c9a84c] text-xs tracking-[0.2em] uppercase mb-3 font-medium">About</p>
+            <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">About</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#f0f4ff] mb-6 leading-tight">
               Applied Mathematics.<br />Financial Precision.
             </h2>
-            <div className="w-12 h-px bg-[#c9a84c] mb-8" />
-            <p className="text-[#94a3b8] leading-relaxed mb-5">
+            <div className="w-12 h-px bg-gradient-to-r from-[#d4a853] to-transparent mb-8" />
+            <p className="text-[#aab8cc] leading-relaxed mb-5">
               I studied Applied Mathematics at UC Berkeley, where I developed a strong foundation in statistical theory, linear algebra, and optimization — the mathematical backbone of modern quantitative finance.
             </p>
-            <p className="text-[#94a3b8] leading-relaxed mb-5">
+            <p className="text-[#aab8cc] leading-relaxed mb-5">
               My work sits at the intersection of finance and machine learning. I build systems that model credit risk, optimize portfolios, and extract signal from complex financial datasets — always with a focus on rigor, interpretability, and practical impact.
             </p>
-            <p className="text-[#94a3b8] leading-relaxed">
+            <p className="text-[#aab8cc] leading-relaxed">
               I&apos;m actively seeking roles in quantitative research, financial analysis, and data science where mathematical depth and computational execution both matter.
             </p>
           </div>
@@ -63,9 +63,9 @@ export default function About() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#c9a84c]/30 transition-colors duration-200"
+                  className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#d4a853]/40 hover:shadow-[0_4px_20px_rgba(212,168,83,0.10)] hover:-translate-y-1 transition-all duration-200"
                 >
-                  <p className="text-[#c9a84c] text-xs tracking-widest uppercase mb-1 font-medium">
+                  <p className="text-[#d4a853] text-xs tracking-widest uppercase mb-1 font-medium">
                     {item.label}
                   </p>
                   <p className="text-[#f0f4ff] text-sm font-medium">{item.value}</p>
@@ -74,11 +74,11 @@ export default function About() {
             </div>
 
             {/* Coursework */}
-            <div className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#c9a84c]/30 transition-colors duration-200">
-              <p className="text-[#c9a84c] text-xs tracking-widest uppercase mb-2 font-medium">
+            <div className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 hover:border-[#d4a853]/40 hover:shadow-[0_4px_20px_rgba(212,168,83,0.10)] hover:-translate-y-1 transition-all duration-200">
+              <p className="text-[#d4a853] text-xs tracking-widest uppercase mb-2 font-medium">
                 Relevant Coursework
               </p>
-              <p className="text-[#94a3b8] text-sm leading-relaxed">
+              <p className="text-[#aab8cc] text-sm leading-relaxed">
                 Probability Theory · Mathematical Economics · Financial Economics · Numerical Analysis · Abstract Linear Algebra · Financial &amp; Managerial Accounting
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function About() {
 
         {/* Experience */}
         <div>
-          <p className="text-[#c9a84c] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Experience</p>
+          <p className="text-[#d4a853] text-xs tracking-[0.2em] uppercase mb-3 font-medium">Experience</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#f0f4ff] mb-10 leading-tight">
             Background
           </h2>
@@ -99,21 +99,21 @@ export default function About() {
                 className="relative pl-8 pb-10 border-l border-[#1a2235] last:border-transparent last:pb-0"
               >
                 {/* Timeline dot */}
-                <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#c9a84c]" />
+                <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#d4a853]" />
 
                 <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
                   <div>
                     <span className="text-[#f0f4ff] font-semibold">{job.company}</span>
-                    <span className="text-[#94a3b8] mx-2">·</span>
-                    <span className="text-[#c9a84c] text-sm">{job.role}</span>
+                    <span className="text-[#aab8cc] mx-2">·</span>
+                    <span className="text-[#d4a853] text-sm">{job.role}</span>
                   </div>
-                  <span className="text-[#94a3b8] text-xs tracking-wide">{job.period}</span>
+                  <span className="text-[#aab8cc] text-xs tracking-wide">{job.period}</span>
                 </div>
 
                 <ul className="flex flex-col gap-1 mt-2">
                   {job.bullets.map((b, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-[#94a3b8]">
-                      <span className="w-1 h-1 rounded-full bg-[#c9a84c] flex-shrink-0 mt-1.5" />
+                    <li key={j} className="flex items-start gap-2 text-sm text-[#aab8cc]">
+                      <span className="w-1 h-1 rounded-full bg-[#d4a853] flex-shrink-0 mt-1.5" />
                       {b}
                     </li>
                   ))}
