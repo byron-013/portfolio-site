@@ -119,6 +119,19 @@ export default function Navbar() {
           </li>
 
           <li>
+            <Link
+              href="/writing"
+              className={`text-sm transition-colors duration-200 tracking-wide ${
+                pathname.startsWith("/writing")
+                  ? "text-[#c9a84c]"
+                  : "text-[#94a3b8] hover:text-[#c9a84c]"
+              }`}
+            >
+              Writing
+            </Link>
+          </li>
+
+          <li>
             <a
               href="mailto:byrondelaney.jr@outlook.com"
               className="text-sm px-4 py-2 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 tracking-wide"
@@ -197,6 +210,14 @@ export default function Navbar() {
                 ))}
             </div>
           )}
+
+          <Link
+            href="/writing"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-2"
+          >
+            Writing
+          </Link>
 
           <a
             href="mailto:byrondelaney.jr@outlook.com"
