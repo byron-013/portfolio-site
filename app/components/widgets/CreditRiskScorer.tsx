@@ -142,22 +142,22 @@ export default function CreditRiskScorer() {
                     type="category"
                     dataKey="name"
                     width={110}
-                    stroke="#616b61"
-                    tick={{ fill: "#616b61", fontSize: 10 }}
+                    stroke="#59635a"
+                    tick={{ fill: "#59635a", fontSize: 10 }}
                     axisLine={false}
                     tickLine={false}
                   />
                   <Tooltip
                     contentStyle={{
-                      background: "#fffef9",
-                      border: "1px solid #e4e0d1",
+                      background: "#f7f4e8",
+                      border: "1px solid #dbd6c2",
                       borderRadius: 4,
                       fontSize: 12,
                     }}
                     formatter={(v) => Number(v).toFixed(2)}
-                    labelStyle={{ color: "#616b61" }}
+                    labelStyle={{ color: "#59635a" }}
                   />
-                  <ReferenceLine x={0} stroke="#cdc7b4" strokeWidth={1} />
+                  <ReferenceLine x={0} stroke="#c2bba3" strokeWidth={1} />
                   <Bar dataKey="value" isAnimationActive={false} radius={[0, 2, 2, 0]}>
                     {contributions.map((c, i) => (
                       <Cell

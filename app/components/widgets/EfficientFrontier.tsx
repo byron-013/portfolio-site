@@ -27,12 +27,12 @@ const C = {
   cloud: "#82897f",
   minVar: "#2a78d6",
   maxSharpe: "#0a8547",
-  grid: "#e4e0d1",
-  tick: "#616b61",
-  tooltipBg: "#fffef9",
-  tooltipBorder: "#e4e0d1",
+  grid: "#dbd6c2",
+  tick: "#59635a",
+  tooltipBg: "#f7f4e8",
+  tooltipBorder: "#dbd6c2",
   accent: "#175d41",
-  zeroBar: "#e4e0d1",
+  zeroBar: "#dbd6c2",
 };
 
 const N = TICKERS.length;

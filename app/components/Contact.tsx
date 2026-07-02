@@ -17,7 +17,7 @@ export default function Contact() {
         <div className="flex flex-col sm:flex-row gap-4">
           <a
             href="mailto:byrondelaney.jr@outlook.com"
-            className="flex items-center gap-3 px-7 py-4 bg-paper text-ink font-medium rounded-sm hover:bg-white transition-colors duration-200 text-sm tracking-wide"
+            className="flex items-center gap-3 px-7 py-4 bg-paper text-ink font-medium rounded-sm hover:bg-surface transition-colors duration-200 text-sm tracking-wide"
           >
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

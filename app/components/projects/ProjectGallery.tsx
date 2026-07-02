@@ -55,7 +55,7 @@ export default function ProjectGallery({ items }: Props) {
                   height="32"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#cdc7b4"
+                  stroke="#c2bba3"
                   strokeWidth={1.5}
                 >
                   <rect x="3" y="3" width="18" height="18" rx="2" />
