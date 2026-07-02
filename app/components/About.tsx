@@ -66,6 +66,17 @@ export default function About() {
           </div>
 
           <div className="flex flex-col gap-4">
+            <figure className="bg-surface border border-line rounded-sm p-3">
+              <img
+                src="/headshot.jpg"
+                alt="Byron Delaney Jr at UC Berkeley"
+                className="w-full rounded-sm object-cover"
+              />
+              <figcaption className="font-mono text-muted text-[11px] tracking-wide mt-2.5 pl-1">
+                UC Berkeley — B.S. Applied Mathematics
+              </figcaption>
+            </figure>
+
             <div className="grid grid-cols-2 gap-4">
               {[
                 { label: "Degree", value: "B.S. Applied Mathematics" },
