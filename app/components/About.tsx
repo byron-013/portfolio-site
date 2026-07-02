@@ -61,7 +61,7 @@ export default function About() {
               My work sits at the intersection of finance and machine learning. I build systems that model credit risk, optimize portfolios, and extract signal from complex financial datasets — always with a focus on rigor, interpretability, and practical impact.
             </p>
             <p className="text-body leading-relaxed">
-              I&apos;m currently a Software Solutions Architect at MaritAIme, and open to roles in quantitative research, financial analysis, and data science where mathematical depth and computational execution both matter.
+              I&apos;m currently a Software Solutions Architect at MaritAIme and pursuing an M.S. in Mathematics at CSU East Bay — and open to roles in quantitative research, financial analysis, and data science where mathematical depth and computational execution both matter.
             </p>
           </div>
 
@@ -79,8 +79,8 @@ export default function About() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: "Degree", value: "B.S. Applied Mathematics" },
-                { label: "Institution", value: "UC Berkeley" },
+                { label: "Degree", value: "B.S. Applied Mathematics — UC Berkeley" },
+                { label: "Graduate Study", value: "M.S. Mathematics (in progress) — CSU East Bay" },
                 { label: "Current Role", value: "Solutions Architect, MaritAIme" },
                 { label: "Languages", value: "English & Spanish" },
               ].map((item) => (
