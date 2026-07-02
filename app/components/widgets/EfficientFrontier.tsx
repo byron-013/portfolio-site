@@ -22,6 +22,19 @@ import {
   NUM_MONTE_CARLO,
 } from "@/app/data/portfolio";
 
+// Chart palette — validated for CVD separation and contrast on the card surface.
+const C = {
+  cloud: "#82897f",
+  minVar: "#2a78d6",
+  maxSharpe: "#0a8547",
+  grid: "#e4e0d1",
+  tick: "#616b61",
+  tooltipBg: "#fffef9",
+  tooltipBorder: "#e4e0d1",
+  accent: "#175d41",
+  zeroBar: "#e4e0d1",
+};
+
 const N = TICKERS.length;
 
 function dot(a: number[], b: number[]): number {
@@ -109,7 +122,7 @@ const pct = (x: number, digits = 1) => `${(x * 100).toFixed(digits)}%`;
 export default function EfficientFrontier() {
   const [rfPct, setRfPct] = useState<number>(RISK_FREE_RATE_DEFAULT * 100);
 
-  const { cloud, invCov, minVar, minVarStats } = useMemo(() => {
+  const { cloud, invCov, minVarStats } = useMemo(() => {
     const inv = invert(COV_MATRIX);
     const points: { vol: number; ret: number; sharpe: number }[] = [];
     for (let i = 0; i < NUM_MONTE_CARLO; i++) {
@@ -123,7 +136,6 @@ export default function EfficientFrontier() {
     return {
       cloud: points,
       invCov: inv,
-      minVar: mv,
       minVarStats: mvStats,
     };
   }, []);
@@ -143,18 +155,18 @@ export default function EfficientFrontier() {
   }));
 
   return (
-    <section className="bg-[#111827] border border-[#1a2235] rounded-lg p-5 md:p-7">
+    <section className="bg-surface border border-line rounded-sm p-5 md:p-7">
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-        <h3 className="text-[#f0f4ff] font-semibold text-base md:text-lg">
+        <h3 className="font-display text-ink font-semibold text-base md:text-lg">
           Live Efficient Frontier
         </h3>
-        <span className="text-[#aab8cc] text-xs tracking-wide">
+        <span className="font-mono text-muted text-xs tracking-wide">
           {NUM_MONTE_CARLO.toLocaleString()} Monte Carlo portfolios · {TICKERS.length} assets
         </span>
       </div>
-      <p className="text-[#aab8cc] text-sm mb-6 leading-relaxed">
-        Every dot is a random long-only portfolio of the 8 assets. The gold dot is the analytical
-        max-Sharpe portfolio at the chosen risk-free rate; the cyan dot is the min-variance portfolio.
+      <p className="text-body text-sm mb-6 leading-relaxed">
+        Every dot is a random long-only portfolio of the 8 assets. The green dot is the analytical
+        max-Sharpe portfolio at the chosen risk-free rate; the blue dot is the min-variance portfolio.
         Math runs in your browser.
       </p>
 
@@ -163,14 +175,14 @@ export default function EfficientFrontier() {
           <div className="h-72 md:h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <ScatterChart margin={{ top: 10, right: 10, bottom: 8, left: -8 }}>
-                <CartesianGrid stroke="#1a2235" strokeDasharray="2 4" />
+                <CartesianGrid stroke={C.grid} strokeDasharray="2 4" />
                 <XAxis
                   type="number"
                   dataKey="vol"
                   name="Volatility"
                   tickFormatter={(v) => pct(v, 0)}
-                  stroke="#64748b"
-                  tick={{ fill: "#aab8cc", fontSize: 11 }}
+                  stroke={C.tick}
+                  tick={{ fill: C.tick, fontSize: 11 }}
                   domain={["dataMin - 0.005", "dataMax + 0.005"]}
                 >
                 </XAxis>
@@ -179,47 +191,47 @@ export default function EfficientFrontier() {
                   dataKey="ret"
                   name="Return"
                   tickFormatter={(v) => pct(v, 0)}
-                  stroke="#64748b"
-                  tick={{ fill: "#aab8cc", fontSize: 11 }}
+                  stroke={C.tick}
+                  tick={{ fill: C.tick, fontSize: 11 }}
                   domain={["dataMin - 0.01", "dataMax + 0.01"]}
                 >
                 </YAxis>
                 <Tooltip
-                  cursor={{ stroke: "#d4a853", strokeWidth: 1, strokeDasharray: "3 3" }}
+                  cursor={{ stroke: C.accent, strokeWidth: 1, strokeDasharray: "3 3" }}
                   contentStyle={{
-                    background: "#0a0f1e",
-                    border: "1px solid #1a2235",
-                    borderRadius: 6,
+                    background: C.tooltipBg,
+                    border: `1px solid ${C.tooltipBorder}`,
+                    borderRadius: 4,
                     fontSize: 12,
                   }}
-                  labelStyle={{ color: "#aab8cc" }}
+                  labelStyle={{ color: C.tick }}
                   formatter={(value, name) => [pct(Number(value), 2), String(name)]}
                 />
-                <Scatter name="Random" data={cloud} fill="#475569" fillOpacity={0.55} shape="circle" />
+                <Scatter name="Random" data={cloud} fill={C.cloud} fillOpacity={0.45} shape="circle" />
                 <Scatter
                   name="Min variance"
                   data={[minVarStats]}
-                  fill="#22d3ee"
+                  fill={C.minVar}
                   shape="circle"
                 />
                 <Scatter
                   name="Max Sharpe"
                   data={[maxSharpeStats]}
-                  fill="#d4a853"
+                  fill={C.maxSharpe}
                   shape="circle"
                 />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mt-3 text-xs text-[#aab8cc]">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mt-3 text-xs text-body">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#475569]" /> Random portfolios
+              <span className="w-2 h-2 rounded-full bg-[#82897f]" /> Random portfolios
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#22d3ee]" /> Min variance
+              <span className="w-2 h-2 rounded-full bg-data-blue" /> Min variance
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#d4a853]" /> Max Sharpe (selected)
+              <span className="w-2 h-2 rounded-full bg-data-green" /> Max Sharpe (selected)
             </span>
           </div>
         </div>
@@ -227,10 +239,10 @@ export default function EfficientFrontier() {
         <div className="md:col-span-5 flex flex-col gap-5">
           <div>
             <div className="flex items-baseline justify-between mb-2">
-              <label htmlFor="rf-slider" className="text-[#aab8cc] text-xs tracking-wide uppercase font-medium">
+              <label htmlFor="rf-slider" className="font-mono text-muted text-xs tracking-wide uppercase">
                 Risk-Free Rate
               </label>
-              <span className="text-[#d4a853] text-sm font-semibold tabular-nums">
+              <span className="font-mono text-accent text-sm font-semibold tabular-nums">
                 {rfPct.toFixed(1)}%
               </span>
             </div>
@@ -242,27 +254,27 @@ export default function EfficientFrontier() {
               step={0.1}
               value={rfPct}
               onChange={(e) => setRfPct(parseFloat(e.target.value))}
-              className="w-full accent-[#d4a853] cursor-pointer"
+              className="w-full accent-accent cursor-pointer"
             />
           </div>
 
           <div className="grid grid-cols-3 gap-2">
-            <div className="bg-[#0a0f1e] border border-[#1a2235] rounded p-3">
-              <p className="text-[#aab8cc] text-[10px] tracking-wider uppercase mb-1">Return</p>
-              <p className="text-[#d4a853] text-lg font-bold tabular-nums">{pct(maxSharpeStats.ret, 1)}</p>
+            <div className="bg-paper border border-line rounded-sm p-3">
+              <p className="font-mono text-muted text-[10px] tracking-wider uppercase mb-1">Return</p>
+              <p className="font-mono text-accent text-lg font-semibold tabular-nums">{pct(maxSharpeStats.ret, 1)}</p>
             </div>
-            <div className="bg-[#0a0f1e] border border-[#1a2235] rounded p-3">
-              <p className="text-[#aab8cc] text-[10px] tracking-wider uppercase mb-1">Vol</p>
-              <p className="text-[#f0f4ff] text-lg font-bold tabular-nums">{pct(maxSharpeStats.vol, 1)}</p>
+            <div className="bg-paper border border-line rounded-sm p-3">
+              <p className="font-mono text-muted text-[10px] tracking-wider uppercase mb-1">Vol</p>
+              <p className="font-mono text-ink text-lg font-semibold tabular-nums">{pct(maxSharpeStats.vol, 1)}</p>
             </div>
-            <div className="bg-[#0a0f1e] border border-[#1a2235] rounded p-3">
-              <p className="text-[#aab8cc] text-[10px] tracking-wider uppercase mb-1">Sharpe</p>
-              <p className="text-[#f0f4ff] text-lg font-bold tabular-nums">{sharpe.toFixed(2)}</p>
+            <div className="bg-paper border border-line rounded-sm p-3">
+              <p className="font-mono text-muted text-[10px] tracking-wider uppercase mb-1">Sharpe</p>
+              <p className="font-mono text-ink text-lg font-semibold tabular-nums">{sharpe.toFixed(2)}</p>
             </div>
           </div>
 
           <div>
-            <p className="text-[#aab8cc] text-xs tracking-wide uppercase font-medium mb-2">
+            <p className="font-mono text-muted text-xs tracking-wide uppercase mb-2">
               Optimal Weights
             </p>
             <div className="h-56 w-full">
@@ -273,29 +285,29 @@ export default function EfficientFrontier() {
                     type="category"
                     dataKey="ticker"
                     width={48}
-                    stroke="#64748b"
-                    tick={{ fill: "#aab8cc", fontSize: 11 }}
+                    stroke={C.tick}
+                    tick={{ fill: C.tick, fontSize: 11 }}
                     axisLine={false}
                     tickLine={false}
                   />
                   <Tooltip
                     contentStyle={{
-                      background: "#0a0f1e",
-                      border: "1px solid #1a2235",
-                      borderRadius: 6,
+                      background: C.tooltipBg,
+                      border: `1px solid ${C.tooltipBorder}`,
+                      borderRadius: 4,
                       fontSize: 12,
                     }}
                     formatter={(value) => pct(Number(value), 1)}
                   />
-                  <Bar dataKey="weight" fill="#d4a853" radius={[0, 2, 2, 0]} isAnimationActive={false}>
+                  <Bar dataKey="weight" fill={C.maxSharpe} radius={[0, 2, 2, 0]} isAnimationActive={false}>
                     {weightsData.map((_, i) => (
-                      <Cell key={i} fill={weightsData[i].weight < 0.005 ? "#1a2235" : "#d4a853"} />
+                      <Cell key={i} fill={weightsData[i].weight < 0.005 ? C.zeroBar : C.maxSharpe} />
                     ))}
                     <LabelList
                       dataKey="weight"
                       position="right"
                       formatter={(v) => pct(Number(v), 1)}
-                      fill="#aab8cc"
+                      fill={C.tick}
                       fontSize={11}
                     />
                   </Bar>

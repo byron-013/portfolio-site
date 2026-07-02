@@ -7,7 +7,7 @@ const EfficientFrontierPreview = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full bg-[#111827]/40 border border-[#1a2235] rounded-lg" />
+      <div className="w-full h-full bg-surface border border-line rounded-sm" />
     ),
   }
 );

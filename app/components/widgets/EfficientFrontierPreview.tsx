@@ -90,12 +90,12 @@ export default function EfficientFrontierPreview() {
         <ScatterChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
           <XAxis type="number" dataKey="vol" hide domain={["dataMin - 0.005", "dataMax + 0.005"]} />
           <YAxis type="number" dataKey="ret" hide domain={["dataMin - 0.01", "dataMax + 0.01"]} />
-          <Scatter data={cloud} fill="#475569" fillOpacity={0.5} shape="circle" />
-          <Scatter data={[mv]} fill="#22d3ee" shape="circle" />
-          <Scatter data={[ms]} fill="#d4a853" shape="circle" />
+          <Scatter data={cloud} fill="#82897f" fillOpacity={0.45} shape="circle" />
+          <Scatter data={[mv]} fill="#2a78d6" shape="circle" />
+          <Scatter data={[ms]} fill="#0a8547" shape="circle" />
         </ScatterChart>
       </ResponsiveContainer>
-      <div className="absolute bottom-1 left-2 text-[10px] text-[#aab8cc]/70 tracking-wide pointer-events-none">
+      <div className="absolute bottom-1 left-2 font-mono text-[10px] text-muted/80 tracking-wide pointer-events-none">
         Efficient frontier · live in your browser
       </div>
     </div>

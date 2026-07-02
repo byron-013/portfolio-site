@@ -39,18 +39,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 ${
         scrolled
-          ? "bg-[#0a0f1e]/90 backdrop-blur-md border-b border-[#d4a853]/15 shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
-          : "bg-transparent"
+          ? "bg-paper/95 backdrop-blur-md border-b border-line shadow-sm"
+          : "bg-paper"
       }`}
     >
+      {/* Masthead rule */}
+      <div className="h-1 bg-accent" />
+
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-[#c9a84c] font-semibold tracking-widest text-sm uppercase"
+          className="font-display text-ink font-semibold text-lg tracking-tight"
         >
-          BD
+          Byron Delaney<span className="text-accent">.</span>
         </Link>
 
         {/* Desktop links */}
@@ -60,8 +63,8 @@ export default function Navbar() {
               href="/"
               className={`text-sm transition-colors duration-200 tracking-wide ${
                 pathname === "/"
-                  ? "text-[#c9a84c]"
-                  : "text-[#94a3b8] hover:text-[#c9a84c]"
+                  ? "text-accent font-medium"
+                  : "text-muted hover:text-ink"
               }`}
             >
               Home
@@ -74,8 +77,8 @@ export default function Navbar() {
               onClick={() => setProjectsOpen((o) => !o)}
               className={`flex items-center gap-1 text-sm transition-colors duration-200 tracking-wide ${
                 isProjectsActive
-                  ? "text-[#c9a84c]"
-                  : "text-[#94a3b8] hover:text-[#c9a84c]"
+                  ? "text-accent font-medium"
+                  : "text-muted hover:text-ink"
               }`}
             >
               Projects
@@ -93,15 +96,15 @@ export default function Navbar() {
             </button>
 
             {projectsOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#111827] border border-[#c9a84c]/20 rounded-lg shadow-2xl overflow-hidden">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-surface border border-line rounded-sm shadow-lg overflow-hidden">
                 <Link
                   href="/projects"
                   onClick={() => setProjectsOpen(false)}
-                  className="block px-4 py-3 text-sm text-[#94a3b8] hover:text-[#c9a84c] hover:bg-[#0a0f1e]/50 transition-colors"
+                  className="block px-4 py-3 text-sm text-body hover:text-accent hover:bg-paper transition-colors"
                 >
                   All Projects
                 </Link>
-                <div className="border-t border-[#1a2235] mx-3" />
+                <div className="border-t border-line mx-3" />
                 {projectCategories
                   .filter((c) => c.id !== "all")
                   .map((cat) => (
@@ -109,7 +112,7 @@ export default function Navbar() {
                       key={cat.id}
                       href={`/projects?category=${cat.id}`}
                       onClick={() => setProjectsOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-[#94a3b8] hover:text-[#c9a84c] hover:bg-[#0a0f1e]/50 transition-colors"
+                      className="block px-4 py-2.5 text-sm text-body hover:text-accent hover:bg-paper transition-colors"
                     >
                       {cat.label}
                     </Link>
@@ -123,8 +126,8 @@ export default function Navbar() {
               href="/writing"
               className={`text-sm transition-colors duration-200 tracking-wide ${
                 pathname.startsWith("/writing")
-                  ? "text-[#c9a84c]"
-                  : "text-[#94a3b8] hover:text-[#c9a84c]"
+                  ? "text-accent font-medium"
+                  : "text-muted hover:text-ink"
               }`}
             >
               Writing
@@ -134,7 +137,7 @@ export default function Navbar() {
           <li>
             <a
               href="mailto:byrondelaney.jr@outlook.com"
-              className="text-sm px-4 py-2 border border-[#c9a84c] text-[#c9a84c] rounded hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all duration-200 tracking-wide"
+              className="text-sm px-4 py-2 bg-accent text-paper rounded-sm hover:bg-accent-deep transition-colors duration-200 tracking-wide font-medium"
             >
               Get in Touch
             </a>
@@ -143,7 +146,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#94a3b8] hover:text-[#c9a84c] transition-colors"
+          className="md:hidden text-muted hover:text-ink transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -159,11 +162,11 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#111827] border-t border-[#c9a84c]/10 px-6 py-4 flex flex-col gap-1">
+        <div className="md:hidden bg-surface border-t border-line px-6 py-4 flex flex-col gap-1">
           <Link
             href="/"
             onClick={() => setMenuOpen(false)}
-            className="text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-2"
+            className="text-sm text-body hover:text-accent transition-colors py-2"
           >
             Home
           </Link>
@@ -171,7 +174,7 @@ export default function Navbar() {
           {/* Mobile projects accordion */}
           <button
             onClick={() => setMobileProjectsOpen((o) => !o)}
-            className="flex items-center justify-between text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-2 w-full text-left"
+            className="flex items-center justify-between text-sm text-body hover:text-accent transition-colors py-2 w-full text-left"
           >
             Projects
             <svg
@@ -188,11 +191,11 @@ export default function Navbar() {
           </button>
 
           {mobileProjectsOpen && (
-            <div className="pl-4 flex flex-col gap-1 border-l border-[#c9a84c]/20 ml-1 mb-1">
+            <div className="pl-4 flex flex-col gap-1 border-l border-line ml-1 mb-1">
               <Link
                 href="/projects"
                 onClick={() => setMenuOpen(false)}
-                className="text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-1.5"
+                className="text-sm text-body hover:text-accent transition-colors py-1.5"
               >
                 All Projects
               </Link>
@@ -203,7 +206,7 @@ export default function Navbar() {
                     key={cat.id}
                     href={`/projects?category=${cat.id}`}
                     onClick={() => setMenuOpen(false)}
-                    className="text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-1.5"
+                    className="text-sm text-body hover:text-accent transition-colors py-1.5"
                   >
                     {cat.label}
                   </Link>
@@ -214,14 +217,14 @@ export default function Navbar() {
           <Link
             href="/writing"
             onClick={() => setMenuOpen(false)}
-            className="text-sm text-[#94a3b8] hover:text-[#c9a84c] transition-colors py-2"
+            className="text-sm text-body hover:text-accent transition-colors py-2"
           >
             Writing
           </Link>
 
           <a
             href="mailto:byrondelaney.jr@outlook.com"
-            className="text-sm text-[#c9a84c] border border-[#c9a84c] px-4 py-2 rounded text-center hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-all mt-2"
+            className="text-sm bg-accent text-paper px-4 py-2 rounded-sm text-center hover:bg-accent-deep transition-colors mt-2 font-medium"
           >
             Get in Touch
           </a>

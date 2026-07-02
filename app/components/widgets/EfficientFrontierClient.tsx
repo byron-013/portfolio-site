@@ -7,7 +7,7 @@ const EfficientFrontier = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="bg-[#111827] border border-[#1a2235] rounded-lg p-8 flex items-center justify-center h-80 text-[#aab8cc] text-sm">
+      <div className="bg-surface border border-line rounded-sm p-8 flex items-center justify-center h-80 text-muted text-sm">
         Loading interactive frontier…
       </div>
     ),

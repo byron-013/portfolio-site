@@ -37,7 +37,7 @@ export default function ImageLightbox({ src, alt, onClose }: Props) {
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 text-[#94a3b8] hover:text-[#f0f4ff] transition-colors flex items-center gap-1.5 text-sm"
+          className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
           aria-label="Close"
         >
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -50,11 +50,11 @@ export default function ImageLightbox({ src, alt, onClose }: Props) {
         <img
           src={src}
           alt={alt}
-          className="max-h-[82vh] w-auto max-w-full rounded-lg shadow-2xl object-contain"
+          className="max-h-[82vh] w-auto max-w-full rounded-sm shadow-2xl object-contain"
         />
 
         {/* Caption */}
-        <p className="mt-3 text-[#94a3b8] text-sm text-center">{alt}</p>
+        <p className="mt-3 text-white/70 text-sm text-center">{alt}</p>
       </div>
     </div>
   );
