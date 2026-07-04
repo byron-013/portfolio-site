@@ -1,7 +1,18 @@
 const experience = [
   {
+    company: "Coers Corporation",
+    role: "Quantitative Researcher & Platform Architect",
+    period: "Jul 2026 – Present",
+    bullets: [
+      "Wrote the signals-platform architecture adopted as the company's plan of record — a read-and-interpret volatility terminal, a signal registry with an append-only history store behind a frozen API, and a three-stage latency roadmap from end-of-day to live.",
+      "Reconciled my platform architecture against the volatility engine's system specification, resolving five seam conflicts — journal contracts, signal ownership, taxonomy mapping, data procurement, build sequencing — into a single build roadmap.",
+      "Freezing the Signal API and registry schemas and building the signals service — dealer-positioning/GEX, flow ratios, cross-index bases — against a deterministic C++ volatility engine (eSSVI surface fitting) fed by Databento OPRA and FRED market data.",
+      "Mapping a ~55-signal, six-family volatility taxonomy (variance risk premium, dealer positioning, skew and term structure, implied moments, dispersion, regime) into the platform's signal registry.",
+    ],
+  },
+  {
     company: "MaritAIme",
-    role: "Software Solutions Architect",
+    role: "Solutions Architect",
     period: "Jun 2026 – Present",
     bullets: [
       "Design and own the data pipelines behind MaritAIme's analytics platform — ingesting vessel telemetry, port-call records, and client operational data into a unified store.",
@@ -61,7 +72,7 @@ export default function About() {
               My work sits at the intersection of finance and machine learning. I build systems that model credit risk, optimize portfolios, and extract signal from complex financial datasets — always with a focus on rigor, interpretability, and practical impact.
             </p>
             <p className="text-body leading-relaxed">
-              I&apos;m currently a Software Solutions Architect at MaritAIme and pursuing an M.S. in Mathematics at CSU East Bay — and open to roles in quantitative research, financial analysis, and data science where mathematical depth and computational execution both matter.
+              I&apos;m currently a Quantitative Researcher &amp; Platform Architect at Coers Corporation — building the research infrastructure and signals platform behind an options-volatility engine — while also a Solutions Architect at MaritAIme and pursuing an M.S. in Mathematics at CSU East Bay. I&apos;m open to roles in quantitative research, financial analysis, and data science where mathematical depth and computational execution both matter.
             </p>
           </div>
 
@@ -81,7 +92,7 @@ export default function About() {
               {[
                 { label: "Degree", value: "B.S. Applied Mathematics — UC Berkeley" },
                 { label: "Graduate Study", value: "M.S. Mathematics (in progress) — CSU East Bay" },
-                { label: "Current Role", value: "Solutions Architect, MaritAIme" },
+                { label: "Current Role", value: "Quantitative Researcher, Coers Corp" },
                 { label: "Languages", value: "English & Spanish" },
               ].map((item) => (
                 <div

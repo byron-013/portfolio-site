@@ -28,10 +28,11 @@ export default function Hero() {
               Quantitative finance &amp; data science
             </h2>
             <p className="anim-fade-in anim-delay-3 text-base md:text-lg text-body max-w-xl leading-relaxed mb-10">
-              Software Solutions Architect at MaritAIme, where I design the data
-              pipelines behind maritime analytics. I build quantitative systems end
-              to end — credit risk models, portfolio optimizers, options analytics —
-              grounded in applied mathematics.
+              Quantitative Researcher &amp; Platform Architect at Coers, building the
+              signals platform behind an options-volatility engine — and Solutions
+              Architect at MaritAIme. I build quantitative systems end to end — credit
+              risk models, portfolio optimizers, options analytics — grounded in
+              applied mathematics.
             </p>
             <div className="anim-fade-in anim-delay-4 flex flex-wrap items-center gap-4">
               <a
