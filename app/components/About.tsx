@@ -4,10 +4,10 @@ const experience = [
     role: "Quantitative Researcher & Platform Architect",
     period: "Jul 2026 – Present",
     bullets: [
-      "Wrote the signals-platform architecture adopted as the company's plan of record — a read-and-interpret volatility terminal, a signal registry with an append-only history store behind a frozen API, and a three-stage latency roadmap from end-of-day to live.",
-      "Reconciled my platform architecture against the volatility engine's system specification, resolving five seam conflicts — journal contracts, signal ownership, taxonomy mapping, data procurement, build sequencing — into a single build roadmap.",
-      "Freezing the Signal API and registry schemas and building the signals service — dealer-positioning/GEX, flow ratios, cross-index bases — against a deterministic C++ volatility engine (eSSVI surface fitting) fed by Databento OPRA and FRED market data.",
-      "Mapping a ~55-signal, six-family volatility taxonomy (variance risk premium, dealer positioning, skew and term structure, implied moments, dispersion, regime) into the platform's signal registry.",
+      "Own the signals-platform architecture — a volatility terminal on a signal registry, append-only history store, and frozen API — adopted as the company's plan of record.",
+      "Building the signals service (dealer-positioning/GEX, flow ratios, cross-index bases) against a deterministic C++ volatility engine (eSSVI surface fitting) fed by Databento OPRA and FRED market data.",
+      "Freezing the Signal API and registry schemas and mapping a ~55-signal, six-family volatility taxonomy into the registry, each signal carrying provenance and confidence.",
+      "Standing up the append-only history store with deterministic-replay backfill, and building the terminal UI on the frozen API.",
     ],
   },
   {
