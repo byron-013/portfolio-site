@@ -4,10 +4,10 @@ const experience = [
     role: "Quantitative Researcher & Platform Architect",
     period: "Jul 2026 – Present",
     bullets: [
-      "Own the signals-platform architecture — a volatility terminal on a signal registry, append-only history store, and frozen API — adopted as the company's plan of record.",
-      "Building the signals service (dealer-positioning/GEX, flow ratios, cross-index bases) against a deterministic C++ volatility engine (eSSVI surface fitting) fed by Databento OPRA and FRED market data.",
-      "Freezing the Signal API and registry schemas and mapping a ~55-signal, six-family volatility taxonomy into the registry, each signal carrying provenance and confidence.",
-      "Standing up the append-only history store with deterministic-replay backfill, and building the terminal UI on the frozen API.",
+      "Design and validate the firm's volatility-signal set — variance risk premium, dealer gamma (GEX), skew, term structure, dispersion, and regime — computed against a deterministic C++ options-volatility engine (eSSVI) on Databento OPRA data.",
+      "Build the signals service that turns raw OPRA options and FRED rates into a ~55-signal, six-family library, each signal scored for provenance and confidence.",
+      "Backtest signals over historical replays to measure stability and predictive edge before they enter the production registry.",
+      "Write the research memos that decide which signals ship to the product and which get cut.",
     ],
   },
   {
