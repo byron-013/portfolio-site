@@ -46,14 +46,14 @@ export const projectCategories: { id: ProjectCategory | "all"; label: string }[]
 
 export const projects: Project[] = [
   {
-    slug: "ktrm",
-    title: "kTRM — Options Analytics Engine",
-    shortTitle: "kTRM",
+    slug: "vega-lab",
+    title: "vega-lab — Options Volatility Analytics Engine",
+    shortTitle: "vega-lab",
     category: "finance-risk",
     tagline:
-      "Intraday vol surface calibration, skew monitoring, and arbitrage detection across SPX, VIX, SPY, QQQ, ES, and OEX — built from a native C++ solver up through interactive dashboards.",
+      "Live implied-volatility surfaces from raw options data — a native C++ Jäckel solver, arbitrage-free eSSVI calibration, and full smile diagnostics across SPX, VIX, SPY, QQQ, ES, and OEX, surfaced through a terminal UI and a web dashboard.",
     description:
-      "A private derivatives analytics engine built for quant research workflows. Databento options data is ingested into Parquet, solved for implied volatility via a native C++ Jaeckel solver with OpenMP parallelism, and fitted to arbitrage-aware eSSVI surfaces. The full pipeline is exposed through a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
+      "A vertically integrated derivatives analytics engine for quant research. Databento OPRA options data is ingested into Parquet, solved for implied volatility by a native C++ Jäckel (\"Let's Be Rational\") solver with OpenMP batch parallelism, and fitted to arbitrage-free eSSVI surfaces. Per-expiry forwards and discount factors are recovered by an inverse-spread-weighted put-call parity regression. Results are exposed through a Textual terminal UI, a Dash/Plotly web dashboard, and a headless CSV/Parquet export mode.",
     keyMetrics: [
       { value: "8.2M", label: "Contracts / Second" },
       { value: "8", label: "Per-Tenor Diagnostics" },
@@ -62,20 +62,20 @@ export const projects: Project[] = [
     ],
     technicalApproach: [
       {
-        heading: "C++ Implied Volatility Solver",
-        body: "The Jaeckel method is implemented in native C++ with OpenMP threading and exposed to Python via zero-copy ctypes bindings. The solver processes 8.2 million contracts per second across the full chain, converting raw prices to implied volatilities that feed directly into surface fitting.",
+        heading: "Native C++ Implied-Volatility Solver",
+        body: "The Jäckel rational-function method (\"Let's Be Rational\") is implemented in C++17, compiled with -O3 -march=native and OpenMP, and exposed to Python via zero-copy ctypes over NumPy arrays. Scalar and batch entry points converge in two or three iterations per contract; the batch path processes roughly 8.2 million contracts per second across the full chain, feeding surface fitting directly.",
       },
       {
-        heading: "eSSVI Surface Calibration",
-        body: "Fitted surfaces use the extended Surface SVI parameterization with penalty terms that enforce no-arbitrage constraints — butterfly and calendar spread violations are penalized during optimization. Each tenor produces 8 diagnostic metrics (ATM IV, 25-delta risk reversal, 25-delta butterfly, skew, variance swap level, forward vol, IV spread, and R²) plus residual plots.",
+        heading: "Arbitrage-Free eSSVI Calibration",
+        body: "Surfaces use the extended SSVI parameterization fitted by a nested optimizer — an outer L-BFGS-B pass over the global (η, γ, ρ) parameters wraps an inner per-slice θ solve, parallelized across expiries. Butterfly (convexity) and calendar (non-decreasing total variance) no-arbitrage constraints enter as penalty terms, so fitted surfaces are arbitrage-free by construction.",
       },
       {
-        heading: "Data Pipeline",
-        body: "Databento L1 options market data is fetched, validated, and stored as Parquet files through an integrated download manager. The pipeline maintains a contract hierarchy across SPX, OEX, VIX, SPY, QQQ, and ES with automatic expiry resolution and forward price computation.",
+        heading: "Forward Extraction & Smile Diagnostics",
+        body: "Per-expiry forwards and discount factors are recovered from a put-call parity regression weighted by inverse bid-ask spread, with an R² confidence score. Each tenor then yields eight diagnostics — ATM IV, 25-delta risk reversal, 25-delta butterfly, skew, a model-free variance-swap rate (trapezoidal integration of OTM prices), forward vol, IV spread, and fit R².",
       },
       {
-        heading: "Terminal UI + Web Dashboard",
-        body: "The Textual TUI supports tenor navigation, four coordinate modes (IV, total variance, sigma-squared, ATM term structure), bid/ask/mid series toggles, CSV export, and an autocompleting command bar. The Dash web UI adds interactive Plotly charts, a 3D surface viewer, eSSVI fit overlays, strike-level inspection via ag-Grid, and a paginated arbitrage scanner that flagged 189 violations (185 butterfly, 4 calendar) on SPY alone.",
+        heading: "Data Pipeline, Terminal UI & Web Dashboard",
+        body: "Databento OPRA data is fetched, validated, and stored as Parquet across a contract hierarchy spanning index, volatility-index, equity, and futures options (SPX, OEX, VIX, SPY, QQQ, ES). The Textual TUI offers tenor navigation, four coordinate modes (IV, total variance, σ², ATM term structure), series toggles, CSV export, and an arbitrage scanner; the Dash web UI adds a 3D surface viewer, eSSVI fit overlays, ag-Grid strike inspection, and a paginated arbitrage scan that flagged 189 violations (185 butterfly, 4 calendar) on SPY alone.",
       },
     ],
     techStack: [
@@ -83,6 +83,7 @@ export const projects: Project[] = [
       { name: "Python", group: "Language" },
       { name: "OpenMP", group: "Performance" },
       { name: "ctypes", group: "Bindings" },
+      { name: "SciPy", group: "Optimization" },
       { name: "Textual", group: "TUI" },
       { name: "Rich", group: "TUI" },
       { name: "Dash", group: "Web" },
@@ -93,28 +94,25 @@ export const projects: Project[] = [
       { name: "NumPy", group: "Data" },
     ],
     galleryItems: [
-      { label: "Terminal UI — ATM Term Structure", sublabel: "TUI home tab showing tenor list, ASCII term structure chart, stats grid, and strike table for SPY", imagePath: "/demos/ktrm/tui_term_structure.png" },
-      { label: "Web — Volatility Smile + eSSVI Fit", sublabel: "Dash dashboard with smile plot, eSSVI fit overlay, stats grid, and strike table for SPY 2025-01-16", imagePath: "/demos/ktrm/web_smile_fit.png" },
-      { label: "Web — Smile Controls + Stats", sublabel: "Coordinate mode buttons, series toggles, ATM marker, export, and 8-metric stats grid", imagePath: "/demos/ktrm/web_smile_controls.png" },
-      { label: "Web — Surface Diagnostics", sublabel: "3D eSSVI surface, selected-tenor fit slice, residuals, parameter terms, and fit quality by tenor", imagePath: "/demos/ktrm/web_surface_diagnostics.png" },
-      { label: "Web — Strike Inspector", sublabel: "Strike table with per-row detail inspector showing moneyness, bid/ask IV, and validity status", imagePath: "/demos/ktrm/web_strike_inspector.png" },
-      { label: "Web — Arbitrage Scan", sublabel: "189 violations detected (185 butterfly, 4 calendar) with type, expiration, and constraint details", imagePath: "/demos/ktrm/web_arbitrage_scan.png" },
+      { label: "Terminal UI — ATM Term Structure", sublabel: "TUI home tab showing tenor list, ASCII term structure chart, stats grid, and strike table for SPY", imagePath: "/demos/vega-lab/tui_term_structure.png" },
+      { label: "Web — Volatility Smile + eSSVI Fit", sublabel: "Dash dashboard with smile plot, eSSVI fit overlay, stats grid, and strike table for SPY 2025-01-16", imagePath: "/demos/vega-lab/web_smile_fit.png" },
+      { label: "Web — Smile Controls + Stats", sublabel: "Coordinate mode buttons, series toggles, ATM marker, export, and 8-metric stats grid", imagePath: "/demos/vega-lab/web_smile_controls.png" },
+      { label: "Web — Surface Diagnostics", sublabel: "3D eSSVI surface, selected-tenor fit slice, residuals, parameter terms, and fit quality by tenor", imagePath: "/demos/vega-lab/web_surface_diagnostics.png" },
+      { label: "Web — Strike Inspector", sublabel: "Strike table with per-row detail inspector showing moneyness, bid/ask IV, and validity status", imagePath: "/demos/vega-lab/web_strike_inspector.png" },
+      { label: "Web — Arbitrage Scan", sublabel: "189 violations detected (185 butterfly, 4 calendar) with type, expiration, and constraint details", imagePath: "/demos/vega-lab/web_arbitrage_scan.png" },
     ],
-    github: "https://github.com/byron-013/kTRM",
+    github: "https://github.com/byron-013/vega-lab",
     isPrivate: true,
     accessLink: "#contact",
     caseStudy: {
-      // REVIEW: rewrite in your own voice; the framing is correct but the specifics
-      // (especially the decision) are stronger if you anchor them in something
-      // concrete you hit during development.
       problem:
         "Quants need a fast feedback loop between raw options market data and a usable volatility surface. Off-the-shelf tools either solve implied vol slowly in pure Python or hide the calibration behind a black box, leaving no way to inspect arbitrage violations strike by strike.",
       approach:
-        "Built a vertically integrated stack: a native C++ Jaeckel solver with OpenMP threading handles implied vol, Python wraps it via zero-copy ctypes, eSSVI surface fitting enforces no-arbitrage via penalty terms, and a Textual TUI plus a Dash/Plotly web dashboard surface the results. Databento L1 data flows in through a managed Parquet pipeline.",
+        "Built a vertically integrated stack: a native C++ Jäckel solver with OpenMP threading handles implied vol, Python wraps it via zero-copy ctypes, eSSVI surface fitting enforces no-arbitrage through penalty terms, and a Textual TUI plus a Dash/Plotly web dashboard surface the results. Databento OPRA data flows in through a managed Parquet pipeline, and forwards come from a spread-weighted parity regression.",
       decision:
-        "Pushed the solver to native C++ rather than staying in NumPy. The Jaeckel method is iterative and runs millions of times per session — keeping it in Python would have made the interactive dashboards unusable. The ctypes bridge takes minutes to write and pays for itself the first time you scan the full SPX chain.",
+        "Pushed the solver to native C++ rather than staying in NumPy. The Jäckel method is iterative and runs millions of times per session — keeping it in Python would have made the interactive dashboards unusable. The ctypes bridge takes minutes to write and pays for itself the first time you scan the full SPX chain.",
       result:
-        "8.2 million contracts per second through the solver, eight per-tenor diagnostics (ATM IV, 25-delta risk reversal, butterfly, skew, variance swap level, forward vol, IV spread, R²) computed live, and 189 arbitrage violations flagged on SPY alone (185 butterfly, 4 calendar) in the first full-chain scan.",
+        "Roughly 8.2 million contracts per second through the solver, eight per-tenor diagnostics computed live, and 189 arbitrage violations flagged on SPY alone (185 butterfly, 4 calendar) in the first full-chain scan.",
     },
   },
   {
