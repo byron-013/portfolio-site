@@ -25,7 +25,7 @@ const skillGroups: SkillGroup[] = [
   {
     category: "ML & Statistics",
     icon: "∑",
-    skills: ["scikit-learn", "XGBoost", "SHAP", "NumPy", "pandas", "NLTK", "Gibbs Sampling"],
+    skills: ["scikit-learn", "XGBoost", "SHAP", "NumPy", "pandas"],
   },
   {
     category: "Data Engineering",

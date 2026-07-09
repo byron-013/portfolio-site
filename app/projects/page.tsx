@@ -5,7 +5,7 @@ import ProjectCategoryTabs from "@/app/components/projects/ProjectCategoryTabs";
 export const metadata: Metadata = {
   title: "Projects — Byron Delaney Jr",
   description:
-    "Quantitative finance, machine learning, and applied mathematics projects by Byron Delaney Jr.",
+    "Quantitative finance and applied mathematics projects by Byron Delaney Jr.",
 };
 
 type Props = {
@@ -26,8 +26,8 @@ export default async function ProjectsPage({ searchParams }: Props) {
           Projects
         </h1>
         <p className="text-body mb-12 max-w-xl leading-relaxed">
-          Quantitative finance, machine learning, and applied mathematics — built
-          end to end. Three include a live in-browser demo.
+          Quantitative finance and applied mathematics — built end to end. Two
+          include a live in-browser demo.
         </p>
         <Suspense fallback={null}>
           <ProjectCategoryTabs defaultCategory={category} />

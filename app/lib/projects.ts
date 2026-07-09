@@ -1,4 +1,4 @@
-export type ProjectCategory = "finance-risk" | "machine-learning" | "applied-mathematics";
+export type ProjectCategory = "finance-risk" | "applied-mathematics";
 
 export type ProjectMetric = {
   value: string;
@@ -40,7 +40,6 @@ export type Project = {
 export const projectCategories: { id: ProjectCategory | "all"; label: string }[] = [
   { id: "all", label: "All Projects" },
   { id: "finance-risk", label: "Finance & Risk" },
-  { id: "machine-learning", label: "Machine Learning" },
   { id: "applied-mathematics", label: "Applied Mathematics" },
 ];
 
@@ -300,92 +299,6 @@ export const projects: Project[] = [
       { label: "Top Merchants", sublabel: "Highest-spend merchants by transaction volume", imagePath: "/demos/personal-finance-analytics/top_merchants.png" },
     ],
     github: "https://github.com/byron-013/personal_finance_analytics",
-  },
-  {
-    slug: "lda-topic-modeling",
-    title: "LDA Topic Modeling Algorithm",
-    shortTitle: "LDA Topic Modeling",
-    category: "machine-learning",
-    tagline: "Latent Dirichlet Allocation implemented from scratch via Gibbs Sampling with perplexity-optimized hyperparameter search.",
-    description:
-      "Latent Dirichlet Allocation implemented from scratch using Gibbs Sampling — no library shortcuts. Accepts PDFs and CSVs, runs a full NLP preprocessing pipeline, and performs hyperparameter grid search optimized by perplexity scoring with topic visualizations.",
-    keyMetrics: [
-      { value: "Scratch", label: "Implementation Depth" },
-      { value: "Gibbs", label: "Sampling Method" },
-      { value: "Perplexity", label: "Optimization Metric" },
-      { value: "PDF + CSV", label: "Input Formats Supported" },
-    ],
-    technicalApproach: [
-      {
-        heading: "Mathematical Foundation",
-        body: "LDA models each document as a mixture of latent topics, and each topic as a distribution over vocabulary. The generative process assumes documents are produced by sampling topics from a Dirichlet prior, then sampling words from those topic distributions. Implementing this from scratch required deriving the full posterior update equations.",
-      },
-      {
-        heading: "Gibbs Sampling",
-        body: "Collapsed Gibbs Sampling was used for posterior inference — iteratively resampling the topic assignment for each word token given all other assignments. This is the standard approach for LDA when an exact solution is intractable, and implementing it directly demonstrates command of Bayesian inference mechanics.",
-      },
-      {
-        heading: "NLP Preprocessing Pipeline",
-        body: "A full preprocessing pipeline handles tokenization, stopword removal, lemmatization, and minimum frequency filtering before fitting. Both PDF documents (via pdfplumber) and CSV corpora are supported as inputs, making the tool applicable to a broad range of document analysis tasks.",
-      },
-      {
-        heading: "Hyperparameter Search",
-        body: "The Dirichlet concentration parameters α and β, along with the number of topics K, were tuned via grid search scored by perplexity on a held-out document set. Lower perplexity indicates better generalization — the model is less surprised by unseen documents under its learned topic structure.",
-      },
-    ],
-    techStack: [
-      { name: "Python", group: "Language" },
-      { name: "NumPy", group: "Data" },
-      { name: "pandas", group: "Data" },
-      { name: "NLTK", group: "NLP" },
-      { name: "matplotlib", group: "Visualization" },
-      { name: "pdfplumber", group: "Parsing" },
-    ],
-    galleryItems: [
-      { label: "Topic-Word Distributions", sublabel: "Top 10 words per discovered topic", imagePath: "/demos/lda-topic-modeling/top_words_per_topic.png" },
-      { label: "Document-Topic Matrix", sublabel: "Topic mixture proportions across the corpus", imagePath: "/demos/lda-topic-modeling/document_topic_heatmap.png" },
-    ],
-    github: "https://github.com/byron-013/LDA-Algorithm",
-  },
-  {
-    slug: "linear-regression",
-    title: "Linear Regression from Scratch",
-    shortTitle: "Linear Regression",
-    category: "machine-learning",
-    tagline: "Single and multivariable linear regression built from first principles using only NumPy.",
-    description:
-      "Single and multivariable linear regression implemented from scratch in Python using only NumPy — no sklearn. Demonstrates deep understanding of the underlying mathematics relevant to quantitative modeling.",
-    keyMetrics: [
-      { value: "0", label: "External ML Libraries" },
-      { value: "NumPy", label: "Only Dependency" },
-      { value: "2", label: "Implementations (Single + Multi)" },
-      { value: "Matrix", label: "Solution Method" },
-    ],
-    technicalApproach: [
-      {
-        heading: "Normal Equation",
-        body: "The closed-form solution β = (XᵀX)⁻¹Xᵀy was implemented directly using NumPy matrix operations. This gives the exact least-squares solution and requires a solid grasp of linear algebra — matrix transposition, inversion, and the geometric interpretation of orthogonal projection.",
-      },
-      {
-        heading: "Gradient Descent",
-        body: "An iterative gradient descent implementation was also built, updating weights by the gradient of the mean squared error at each step. This implementation handles the learning rate, convergence criteria, and loss history tracking that practitioners deal with when closed-form solutions are computationally infeasible.",
-      },
-      {
-        heading: "Why This Matters for Quant Work",
-        body: "Linear regression is the foundation of factor models, risk attribution, and a large portion of quantitative strategy research. Building it from scratch demonstrates that the mathematical mechanics are understood — not just the sklearn API call. Every regularization technique, covariance estimate, and OLS assumption traces back to this foundation.",
-      },
-    ],
-    techStack: [
-      { name: "Python", group: "Language" },
-      { name: "NumPy", group: "Data" },
-    ],
-    galleryItems: [
-      { label: "Single Variable Regression Fit", sublabel: "Observed data, fitted line, and true line", imagePath: "/demos/linear-regression/single_variable_linear_regression.png" },
-      { label: "Residual Analysis", sublabel: "Residuals vs. predicted values for multivariate model", imagePath: "/demos/linear-regression/multivariate_residual_plot.png" },
-      { label: "Actual vs. Predicted", sublabel: "Multivariate regression prediction accuracy", imagePath: "/demos/linear-regression/multivariate_actual_vs_predicted.png" },
-      { label: "Estimated Coefficients", sublabel: "Bar chart of fitted regression coefficients", imagePath: "/demos/linear-regression/multivariate_coefficients.png" },
-    ],
-    github: "https://github.com/byron-013/python-linear-regression-functions",
   },
   {
     slug: "simulated-annealing",
