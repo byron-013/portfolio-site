@@ -162,10 +162,9 @@ export const projects: Project[] = [
       { name: "SMTP", group: "Delivery" },
     ],
     galleryItems: [
-      { label: "Narrated Briefing Email", sublabel: "The delivered pre-market brief — TL;DR, per-position notes, Fed and macro, sentiment, filings, coverage" },
-      { label: "Relevance-Ranked Context", sublabel: "The deterministic context document the model narrates from, bucketed and scored per story" },
-      { label: "Sentiment Gauge vs. Baseline", sublabel: "Daily mean news-flow sentiment z-scored against the rolling 30-day SQLite baseline" },
-      { label: "Coverage Note", sublabel: "Per-source status for the run — one failed adapter shows up here and the brief still ships" },
+      { label: "Narrated Briefing Email", sublabel: "The delivered pre-market brief — TL;DR and per-position notes, each claim linked to its source", imagePath: "/demos/daybreak/briefing-email.png" },
+      { label: "Relevance-Ranked Context", sublabel: "The deterministic document the model narrates from — every item bucketed, scored, sentiment-tagged, and deduped", imagePath: "/demos/daybreak/ranked-context.png" },
+      { label: "Sentiment Gauge & Coverage", sublabel: "Aggregate news-flow sentiment with its baseline caveat, and per-source health for the run", imagePath: "/demos/daybreak/sentiment-coverage.png" },
     ],
     github: "https://github.com/byron-013/daybreak",
     isPrivate: true,
