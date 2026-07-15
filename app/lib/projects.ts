@@ -115,6 +115,73 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "daybreak",
+    title: "daybreak — Pre-Market Portfolio Intelligence",
+    shortTitle: "daybreak",
+    category: "finance-risk",
+    tagline:
+      "A scheduled pipeline that collects news, SEC filings, Fed and macro data, and quantified sentiment for one specific portfolio each morning, ranks every story against the holdings, and emails a narrated pre-market brief before the open.",
+    description:
+      "Five fail-soft source adapters (Finnhub, SEC EDGAR, FRED, RSS, Alpha Vantage) normalize into a single content-hashed record type, deduplicate in SQLite, and pass through a pure relevance ranker that buckets and scores each story by portfolio fit, recency, and sentiment. A daily gauge z-scores the day's news-flow mood against a rolling 30-day baseline, and a headless LLM narrates the ranked context into a sectioned brief delivered over SMTP. A broken source degrades to a one-line coverage note instead of sinking the run.",
+    keyMetrics: [
+      { value: "5", label: "Fail-Soft Data Sources" },
+      { value: "6", label: "Relevance Buckets" },
+      { value: "30-Day", label: "Sentiment Baseline" },
+      { value: "Zero", label: "Type Suppressions (Strict)" },
+    ],
+    technicalApproach: [
+      {
+        heading: "Fail-Soft Source Adapters",
+        body: "Five adapters implement one source protocol and normalize news, filings, macro series, and sentiment into a frozen, content-hashed Item, so downstream stages never know which upstream produced a record. Each retries transport failures and returns an explicit success-or-error value rather than raising — a dead feed becomes a coverage note, never a failed run. Alpha Vantage's ticker parameter turned out to be AND-semantics (two symbols returned results, ten returned none), so the adapter fetches one request per ticker inside the free tier's 25-per-day budget and degrades to partial coverage when it runs out.",
+      },
+      {
+        heading: "Pure, Deterministic Relevance Ranking",
+        body: "Items in, ranked items out, with no I/O in the ranking layer. Each story is classified into one of six buckets — held positions, watchlist, sectors, Fed and macro, filings, and general market — by ticker, company-name, and keyword matching, then scored by bucket weight times recency decay times sentiment magnitude. Near-duplicates of the same story from different outlets collapse by token-set Jaccard similarity. The clock is passed in as a parameter, so the entire ranker is unit-tested against fixed timestamps.",
+      },
+      {
+        heading: "Quantified Sentiment Gauge",
+        body: "Alpha Vantage returns a per-article sentiment score in [-1, 1]; the gauge averages the day's scored articles and z-scores that mean against a rolling 30-day baseline persisted in SQLite, so the brief can state that news flow is unusually bearish for this book with a number behind it. Macro observations are exempt from recency decay — otherwise a monthly CPI print would decay to near zero and drop out of the section that exists to show it.",
+      },
+      {
+        heading: "LLM Narration Under a Hard Contract",
+        body: "Every analytical stage stays in Python; the language model only writes prose over a deterministic context document it cannot exceed. The ranked context, gauge, and coverage note are archived, then a headless Claude Code call renders a sectioned Markdown brief that is converted to HTML and delivered over SMTP. When a live run showed the model inventing its own section headings, the fix was to move the output contract into the document itself rather than trust a prompt flag. A Windows scheduled task runs the whole pipeline before the open each weekday.",
+      },
+    ],
+    techStack: [
+      { name: "Python", group: "Language" },
+      { name: "httpx", group: "Networking" },
+      { name: "tenacity", group: "Networking" },
+      { name: "SQLite", group: "Storage" },
+      { name: "feedparser", group: "Data" },
+      { name: "Alpha Vantage", group: "Data Source" },
+      { name: "Finnhub", group: "Data Source" },
+      { name: "FRED", group: "Data Source" },
+      { name: "SEC EDGAR", group: "Data Source" },
+      { name: "Pyright", group: "Tooling" },
+      { name: "pytest", group: "Tooling" },
+      { name: "SMTP", group: "Delivery" },
+    ],
+    galleryItems: [
+      { label: "Narrated Briefing Email", sublabel: "The delivered pre-market brief — TL;DR, per-position notes, Fed and macro, sentiment, filings, coverage" },
+      { label: "Relevance-Ranked Context", sublabel: "The deterministic context document the model narrates from, bucketed and scored per story" },
+      { label: "Sentiment Gauge vs. Baseline", sublabel: "Daily mean news-flow sentiment z-scored against the rolling 30-day SQLite baseline" },
+      { label: "Coverage Note", sublabel: "Per-source status for the run — one failed adapter shows up here and the brief still ships" },
+    ],
+    github: "https://github.com/byron-013/daybreak",
+    isPrivate: true,
+    accessLink: "#contact",
+    caseStudy: {
+      problem:
+        "A swing trader's edge decays fast on stale, generic market news. General feeds bury the handful of stories that actually touch a specific book — an 8-K on a holding, a Fed print, a sector move — under everything else, and checking a dozen sources by hand before the open does not scale to a daily habit.",
+      approach:
+        "Built a scheduled pipeline: five fail-soft adapters normalize news, filings, macro series, and quantified sentiment into one content-hashed record type; a pure ranker buckets and scores every story against the portfolio; a gauge z-scores the day's mood against a 30-day baseline; and a headless LLM narrates the ranked context into a sectioned brief emailed before the open. Every source failure is soft and reported, so the run always completes.",
+      decision:
+        "Kept every analytical stage — collection, ranking, deduplication, and the gauge — deterministic and in Python, and handed the language model only the final narration. Ranking takes the clock as an injected parameter, so it is unit-tested against fixed timestamps and never invents a number; the model rephrases what the context document already contains, nothing more. A wrong figure in the brief is a failing test, not a mystery buried in prose.",
+      result:
+        "A strictly typed, tested pipeline that emails a portfolio-specific pre-market brief every weekday morning, with a sentiment read that positions today's news flow against its own history. It was hardened by an eight-finding self-review before it shipped — the biggest catch was month-old macro prints silently decaying out of the brief, exactly the kind of story it exists to surface.",
+    },
+  },
+  {
     slug: "credit-risk-scoring",
     title: "Credit Risk Scoring & Loan Default Prediction",
     shortTitle: "Credit Risk Scoring",

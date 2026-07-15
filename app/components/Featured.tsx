@@ -14,7 +14,7 @@ export default function Featured() {
           Case studies, with the models running live
         </h2>
         <p className="text-body mb-14 max-w-2xl leading-relaxed">
-          Three projects written up end to end — problem, approach, decision,
+          Four projects written up end to end — problem, approach, decision,
           result. Two include interactive models that compute in your browser.
         </p>
 
